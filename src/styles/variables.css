@@ -1,0 +1,421 @@
+:root {
+  --primary-brighter: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    calc(var(--primaryL) + 16%)
+  );
+  --primary-bright: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    calc(var(--primaryL) + 8%)
+  );
+  --primary: hsl(var(--primaryH), var(--primaryS), var(--primaryL));
+  --primary-dark: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    calc(var(--primaryL) - 8%)
+  );
+  --primary-darker: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    calc(var(--primaryL) - 16%)
+  );
+  --primary-opacity-05: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    var(--primaryL),
+    0.05
+  );
+  --primary-opacity-1: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    var(--primaryL),
+    0.1
+  );
+  --primary-opacity-2: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    var(--primaryL),
+    0.2
+  );
+  --primary-opacity-3: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    var(--primaryL),
+    0.3
+  );
+  --primary-opacity-4: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    var(--primaryL),
+    0.4
+  );
+  --primary-opacity-5: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    var(--primaryL),
+    0.5
+  );
+  --primary-opacity-6: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    var(--primaryL),
+    0.6
+  );
+  --primary-opacity-7: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    var(--primaryL),
+    0.7
+  );
+  --primary-opacity-8: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    var(--primaryL),
+    0.8
+  );
+  --primary-opacity-9: hsl(
+    var(--primaryH),
+    var(--primaryS),
+    var(--primaryL),
+    0.9
+  );
+  --success-brighter: hsl(
+    var(--successH),
+    var(--successS),
+    calc(var(--successL) + 16%)
+  );
+  --success-bright: hsl(
+    var(--successH),
+    var(--successS),
+    calc(var(--successL) + 8%)
+  );
+  --success: hsl(var(--successH), var(--successS), var(--successL));
+  --success-dark: hsl(
+    var(--successH),
+    var(--successS),
+    calc(var(--successL) - 8%)
+  );
+  --success-darker: hsl(
+    var(--successH),
+    var(--successS),
+    calc(var(--successL) - 16%)
+  );
+  --success-opacity-1: hsl(
+    var(--successH),
+    var(--successS),
+    var(--successL),
+    0.1
+  );
+  --success-opacity-2: hsl(
+    var(--successH),
+    var(--successS),
+    var(--successL),
+    0.2
+  );
+  --success-opacity-3: hsl(
+    var(--successH),
+    var(--successS),
+    var(--successL),
+    0.3
+  );
+  --success-opacity-4: hsl(
+    var(--successH),
+    var(--successS),
+    var(--successL),
+    0.4
+  );
+  --success-opacity-5: hsl(
+    var(--successH),
+    var(--successS),
+    var(--successL),
+    0.5
+  );
+  --success-opacity-6: hsl(
+    var(--successH),
+    var(--successS),
+    var(--successL),
+    0.6
+  );
+  --success-opacity-7: hsl(
+    var(--successH),
+    var(--successS),
+    var(--successL),
+    0.7
+  );
+  --success-opacity-8: hsl(
+    var(--successH),
+    var(--successS),
+    var(--successL),
+    0.8
+  );
+  --success-opacity-9: hsl(
+    var(--successH),
+    var(--successS),
+    var(--successL),
+    0.9
+  );
+  --warning-brighter: hsl(
+    var(--warningH),
+    var(--warningS),
+    calc(var(--warningL) + 16%)
+  );
+  --warning-bright: hsl(
+    var(--warningH),
+    var(--warningS),
+    calc(var(--warningL) + 8%)
+  );
+  --warning: hsl(var(--warningH), var(--warningS), var(--warningL));
+  --warning-dark: hsl(
+    var(--warningH),
+    var(--warningS),
+    calc(var(--warningL) - 8%)
+  );
+  --warning-darker: hsl(
+    var(--warningH),
+    var(--warningS),
+    calc(var(--warningL) - 16%)
+  );
+  --warning-opacity-1: hsl(
+    var(--warningH),
+    var(--warningS),
+    var(--warningL),
+    0.1
+  );
+  --warning-opacity-2: hsl(
+    var(--warningH),
+    var(--warningS),
+    var(--warningL),
+    0.2
+  );
+  --warning-opacity-3: hsl(
+    var(--warningH),
+    var(--warningS),
+    var(--warningL),
+    0.3
+  );
+  --warning-opacity-4: hsl(
+    var(--warningH),
+    var(--warningS),
+    var(--warningL),
+    0.4
+  );
+  --warning-opacity-5: hsl(
+    var(--warningH),
+    var(--warningS),
+    var(--warningL),
+    0.5
+  );
+  --warning-opacity-6: hsl(
+    var(--warningH),
+    var(--warningS),
+    var(--warningL),
+    0.6
+  );
+  --warning-opacity-7: hsl(
+    var(--warningH),
+    var(--warningS),
+    var(--warningL),
+    0.7
+  );
+  --warning-opacity-8: hsl(
+    var(--warningH),
+    var(--warningS),
+    var(--warningL),
+    0.8
+  );
+  --warning-opacity-9: hsl(
+    var(--warningH),
+    var(--warningS),
+    var(--warningL),
+    0.9
+  );
+  --danger-brighter: hsl(
+    var(--dangerH),
+    var(--dangerS),
+    calc(var(--dangerL) + 16%)
+  );
+  --danger-bright: hsl(
+    var(--dangerH),
+    var(--dangerS),
+    calc(var(--dangerL) + 8%)
+  );
+  --danger: hsl(var(--dangerH), var(--dangerS), var(--dangerL));
+  --danger-dark: hsl(var(--dangerH), var(--dangerS), calc(var(--dangerL) - 8%));
+  --danger-darker: hsl(
+    var(--dangerH),
+    var(--dangerS),
+    calc(var(--dangerL) - 16%)
+  );
+  --danger-opacity-1: hsl(var(--dangerH), var(--dangerS), var(--dangerL), 0.1);
+  --danger-opacity-2: hsl(var(--dangerH), var(--dangerS), var(--dangerL), 0.2);
+  --danger-opacity-3: hsl(var(--dangerH), var(--dangerS), var(--dangerL), 0.3);
+  --danger-opacity-4: hsl(var(--dangerH), var(--dangerS), var(--dangerL), 0.4);
+  --danger-opacity-5: hsl(var(--dangerH), var(--dangerS), var(--dangerL), 0.5);
+  --danger-opacity-6: hsl(var(--dangerH), var(--dangerS), var(--dangerL), 0.6);
+  --danger-opacity-7: hsl(var(--dangerH), var(--dangerS), var(--dangerL), 0.7);
+  --danger-opacity-8: hsl(var(--dangerH), var(--dangerS), var(--dangerL), 0.8);
+  --danger-opacity-9: hsl(var(--dangerH), var(--dangerS), var(--dangerL), 0.9);
+  --info-brighter: hsl(var(--infoH), var(--infoS), calc(var(--infoL) + 16%));
+  --info-bright: hsl(var(--infoH), var(--infoS), calc(var(--infoL) + 8%));
+  --info: hsl(var(--infoH), var(--infoS), var(--infoL));
+  --info-dark: hsl(var(--infoH), var(--infoS), calc(var(--infoL) - 8%));
+  --info-darker: hsl(var(--infoH), var(--infoS), calc(var(--infoL) - 16%));
+  --info-opacity-1: hsl(var(--infoH), var(--infoS), var(--infoL), 0.1);
+  --info-opacity-2: hsl(var(--infoH), var(--infoS), var(--infoL), 0.2);
+  --info-opacity-3: hsl(var(--infoH), var(--infoS), var(--infoL), 0.3);
+  --info-opacity-4: hsl(var(--infoH), var(--infoS), var(--infoL), 0.4);
+  --info-opacity-5: hsl(var(--infoH), var(--infoS), var(--infoL), 0.5);
+  --info-opacity-6: hsl(var(--infoH), var(--infoS), var(--infoL), 0.6);
+  --info-opacity-7: hsl(var(--infoH), var(--infoS), var(--infoL), 0.7);
+  --info-opacity-8: hsl(var(--infoH), var(--infoS), var(--infoL), 0.8);
+  --info-opacity-9: hsl(var(--infoH), var(--infoS), var(--infoL), 0.9);
+
+  /* White */
+  --white: #fff;
+  --white-opacity-1: rgba(255, 255, 255, 0.04);
+  --white-opacity-2: rgba(255, 255, 255, 0.08);
+  --white-opacity-3: rgba(255, 255, 255, 0.16);
+  --white-opacity-4: rgba(255, 255, 255, 0.24);
+  --white-opacity-5: rgba(255, 255, 255, 0.32);
+  --white-opacity-6: rgba(255, 255, 255, 0.48);
+  --white-opacity-7: rgba(255, 255, 255, 0.64);
+  --white-opacity-8: rgba(255, 255, 255, 0.8);
+  --white-opacity-9: rgba(255, 255, 255, 0.88);
+  /* Black */
+  --black: #000;
+  --black-opacity-1: rgba(0, 0, 0, 0.04);
+  --black-opacity-2: rgba(0, 0, 0, 0.08);
+  --black-opacity-3: rgba(0, 0, 0, 0.16);
+  --black-opacity-4: rgba(0, 0, 0, 0.24);
+  --black-opacity-5: rgba(0, 0, 0, 0.32);
+  --black-opacity-6: rgba(0, 0, 0, 0.48);
+  --black-opacity-7: rgba(0, 0, 0, 0.64);
+  --black-opacity-8: rgba(0, 0, 0, 0.8);
+  --black-opacity-9: rgba(0, 0, 0, 0.88);
+  /* Gray */
+  --gray-1: hsl(0, 0%, 95%);
+  --gray-2: hsl(0, 0%, 90%);
+  --gray-3: hsl(0, 0%, 80%);
+  --gray-4: hsl(0, 0%, 70%);
+  --gray-5: hsl(0, 0%, 60%);
+  --gray-6: hsl(0, 0%, 50%);
+  --gray-7: hsl(0, 0%, 40%);
+  --gray-8: hsl(0, 0%, 30%);
+  --gray-9: hsl(0, 0%, 16%);
+  /* Font Family */
+  --font-zh-cn: "PingFang SC", "Helvetica Neue", "Helvetica", "STHeitiSC-Light",
+    "Arial", sans-serif;
+  --font-zh-tw: "MHei", "Helvetica Neue", "Helvetica", "Arial", "Verdana",
+    sans-serif;
+  --font-ja-jp: "Apple TP", "Helvetica Neue", "Helvetica",
+    "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo",
+    "ＭＳ Ｐゴシック", "Arial", "Verdana", sans-serif;
+  --font-en-us: "Myriad Set Pro", "Helvetica Neue", "Helvetica", "Arial",
+    sans-serif;
+  --font-kiro: "Kiro-Regular", sans-serif;
+  --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  /* Font Size */
+  --browser-default: 16px;
+  --text-2xs: 0.625rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 4rem;
+  /* Font Weight */
+  --font-hairline: 100;
+  --font-thin: 200;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+  /* Line Height */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+  --leading-3: 0.75rem;
+  --leading-4: 1rem;
+  --leading-5: 1.25rem;
+  --leading-6: 1.5rem;
+  --leading-7: 1.75rem;
+  --leading-8: 2rem;
+  /* Spacing */
+  --spacing-base: 16px;
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --spacing-40: 10rem;
+  --spacing-48: 12rem;
+  --spacing-56: 14rem;
+  --spacing-64: 16rem;
+  /* Border Radius */
+  --rounded-none: 0;
+  --rounded-sm: 0.125rem;
+  --rounded: 0.25rem;
+  --rounded-md: 0.375rem;
+  --rounded-lg: 0.5rem;
+  /* Box Shadow */
+  --shadow-xs: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-outline: 0 0 0 3px var(--primary-opacity-2);
+  --shadow-none: none;
+  --shadow-outline-white: 0 0 0 3px var(--white-opacity-2);
+  --shadow-outline-gray: 0 0 0 3px var(--black-opacity-2);
+  --shadow-outline-success: 0 0 0 3px var(--success-opacity-2);
+  --shadow-outline-info: 0 0 0 3px var(--info-opacity-2);
+  --shadow-outline-danger: 0 0 0 3px var(--danger-opacity-2);
+  --shadow-outline-warning: 0 0 0 3px var(--warning-opacity-2);
+
+  --shadow-inset-white: inset 0 0 0 3px var(--white-opacity-2);
+  --shadow-inset-gray: inset 0 0 0 3px var(--black-opacity-2);
+  --shadow-inset-primary: inset 0 0 0 3px var(--primary-opacity-2);
+  --shadow-inset-success: inset 0 0 0 3px var(--success-opacity-2);
+  --shadow-inset-info: inset 0 0 0 3px var(--info-opacity-2);
+  --shadow-inset-danger: inset 0 0 0 3px var(--danger-opacity-2);
+  --shadow-inset-warning: inset 0 0 0 3px var(--warning-opacity-2);
+  /* z-index */
+  --z-backdrop: 1000;
+  --z-dropdown: 1020;
+  --z-sticky: 1030;
+  --z-fixed: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  /* Breakpoints */
+  --mobile: 768px;
+  --tablet: 1018px;
+  --desktop: 1358px;
+}

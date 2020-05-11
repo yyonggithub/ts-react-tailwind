@@ -1,0 +1,50 @@
+.Loader--dot {
+  --dot-size: 6px;
+  --out-color: var(--gray-2);
+  --dot-duration: 0.5s;
+  width: calc(var(--dot-size) * 4);
+}
+
+.Loader__dot {
+  background-color: currentColor;
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: var(--dot-size);
+  width: var(--dot-size);
+  transform-origin: center;
+}
+
+.Loader--dot:nth-child(1) {
+  animation: dot-loader-left var(--dot-duration) infinite alternate ease;
+}
+
+.Loader--dot:nth-child(2) {
+  animation: dot-loader-right var(--dot-duration) infinite alternate ease;
+}
+
+
+@keyframes dot-loader-left {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    background-color: currentColor;
+  }
+  100% {
+    background-color: var(--dot-color);
+    transform: translate3d(calc(var(--dot-size) / -1), 0, 0) scale(0.64);
+  }
+}
+
+@keyframes dot-loader-right {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    background-color: currentColor;
+  }
+  100% {
+    background-color: var(--dot-color);
+    transform: translate3d(var(--dot-size), 0, 0) scale(0.64);
+  }
+}
