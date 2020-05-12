@@ -1,16 +1,19 @@
 import * as React from 'react';
+import { filterClassNameAndToString } from '../../../utils';
+import './style.css';
 
-interface Props {
-  color: string;
+type Props = {
   outColor?: string;
   size?: string;
   duration?: string;
+} & Partial<typeof defaultProps>
+
+const defaultProps = {
+  color: 'text-gray-5'
 }
 
-class LoaderDot extends React.Component<Props, {}> {
-  static defaultProps = {
-    color: 'text-gray-5'
-  }
+class LoaderDot extends React.Component<Props & typeof defaultProps, {}> {
+  static defaultProps = defaultProps
   get cssVar() {
     const style: any = {
     }
@@ -24,14 +27,6 @@ class LoaderDot extends React.Component<Props, {}> {
       style['--dot-duration'] = this.props.duration
     }
 
-
-    // let cssProperty = '';
-    // if (this.props.outColor)
-    //   cssProperty = `${cssProperty} --dot-color: ${this.props.outColor};`;
-    // if (this.props.size)
-    //   cssProperty = `${cssProperty} --dot-size: ${this.props.size};`;
-    // if (this.props.duration)
-    //   cssProperty = `${cssProperty} --dot-duration: ${this.props.duration};`;
     return style;
   }
 
@@ -40,7 +35,7 @@ class LoaderDot extends React.Component<Props, {}> {
       "Loader--dot items-center flex flex-shrink-0 justify-center text-center",
       this.props.color,
     ]
-    return list.join(' ')
+    return filterClassNameAndToString(list)
   }
   render() {
     return (

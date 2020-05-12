@@ -1,0 +1,34 @@
+:root {
+  /* https://github.com/choice-form/ui-universe/blob/084590562157e6b308996ba0ee4612e653247817/packages/document/app/styles/variables.css */
+  /* primary */
+  --primaryH: 220;
+  --primaryS: 100%;
+  --primaryL: 50%;
+  /* success */
+  --successH: 135;
+  --successS: 60%;
+  --successL: 50%;
+  /* warning */
+  --warningH: 45;
+  --warningS: 100%;
+  --warningL: 50%;
+  /* danger */
+  --dangerH: 0;
+  --dangerS: 75%;
+  --dangerL: 50%;
+  /* info */
+  --infoH: 280;
+  --infoS: 100%;
+  --infoL: 50%;
+  /* text */
+  --text-body-bright: var(--gray-7);
+  --text-body: var(--gray-8);
+  --text-body-dark: var(--gray-9);
+  --text-secondary: var(--gray-5);
+  /* border */
+  --border-dark: var(--gray-4);
+  --border-normal: var(--gray-3);
+  --border-bright: var(--gray-1);
+  /* background */
+  --background-body: var(--white);
+}

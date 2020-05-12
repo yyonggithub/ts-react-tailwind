@@ -1,29 +1,28 @@
 import * as React from 'react'
 import { ReactSVG } from 'react-svg'
-import './style.css'
+import { filterClassNameAndToString } from '../../utils'
 
-interface Props {
+type Props = {
   icon: string;
   class?: string;
-  size?: number;
-  transition?: string;
   style?: any
+} & Partial<typeof defaultProps>
+
+const defaultProps = {
+  size: "16px",
+  transition: 'transition ease-in-out duration-200',
 }
 
-class Icon extends React.Component<Props, {}> {
-  static defaultProps = {
-    size: "16px",
-    transition: 'transition ease-in-out duration-200',
-    hidden: false,
-  }
+class Icon extends React.Component<Props & typeof defaultProps, {}> {
+  static defaultProps = defaultProps
 
   get classStr() {
     const list = [
       'Icon pointer-events-none flex-shrink-0',
       this.props.transition,
       this.props.class
-    ].filter(str => str !== '' || typeof str !== 'undefined')
-    return list.join(' ')
+    ]
+    return filterClassNameAndToString(list)
   }
   render() {
     const style = {
@@ -32,6 +31,8 @@ class Icon extends React.Component<Props, {}> {
     }
     return (
       <div
+        aria-live="polite"
+        aria-label="Do not refresh the page"
         className={this.classStr}
         style={this.props.style}
       >

@@ -1,20 +1,12 @@
 import * as React from 'react';
 import Icon from '../icon';
 import LoaderDot from '../loading/dot'
+import { filterClassNameAndToString } from '../../utils';
 
-interface Props {
-  text?: string;
+type presetType = 'default' | 'primary' | 'secondary' | 'danger' | 'text'
+
+type Props = {
   class?: string;
-  align?: string;
-  display?: string;
-  shrink?: string;
-  font?: string;
-  outline?: string;
-  radius?: string;
-  lineHeight?: string;
-  extendIcon?: string;
-  transition?: string;
-  disabledColor?: string;
   ifFocusedColor?: string;
   elseFocusedColor?: string;
   ariaLabel?: string;
@@ -24,37 +16,40 @@ interface Props {
   padding?: boolean | string;
   icon?: string;
   size?: string | boolean;
-  preset?: string;
+  preset?: presetType;
   color?: string;
   iconMargin?: string;
   iconColor?: string;
   isOpen?: boolean;
+  extendIcon?: string;
   onClick?: Function;
   onMousedown?: Function
   onMouseup?: Function;
-}
+} & Partial<typeof defaultProps>
 
 interface State {
   focused: boolean;
 }
 
+const defaultProps = {
+  text: '',
+  align: 'justify-center items-center',
+  display: 'inline-flex',
+  shrink: 'flex-shrink-0',
+  font: 'text-sm font-medium',
+  outline: 'focus:outline-none',
+  radius: 'rounded-md',
+  lineHeight: 'leading-5',
+  // extendIcon: '#outline-small-down-16',
+  transition: 'transition ease-in-out duration-200',
+  disabledColor: 'border border-transparent bg-gray-2 text-gray-6'
+}
+
 class Button extends React.Component<Props, State> {
 
-  static defaultProps = {
-    text: '按钮',
-    align: 'justify-center items-center',
-    display: 'inline-flex',
-    shrink: 'flex-shrink-0',
-    font: 'text-sm font-medium',
-    outline: 'focus:outline-none',
-    radius: 'rounded-md',
-    lineHeight: 'leading-5',
-    extendIcon: '#outline-small-down-16',
-    transition: 'transition ease-in-out duration-200',
-    disabledColor: 'border border-transparent bg-gray-2 text-gray-6'
-  }
-  input: React.RefObject<HTMLButtonElement>;
+  static defaultProps = defaultProps;
 
+  input: React.RefObject<HTMLButtonElement>;
 
   constructor(props: Readonly<Props>) {
     super(props);
@@ -145,13 +140,13 @@ class Button extends React.Component<Props, State> {
       case 'text':
         return `${this.focusState} text-body hover:bg-gray-1 active:bg-gray-2 active:text-body-dark`;
       case 'primary':
-        return `border ${this.focusState} text-white primary hover:primary-bright active:primary-dark`;
+        return `border ${this.focusState} text-white bg-primary hover:bg-primary-bright active:bg-primary-dark`;
       case 'secondary':
-        return `border ${this.focusState} text-primary primary-opacity-1 hover:primary-opacity-05`;
+        return `border ${this.focusState} text-primary bg-primary-opacity-1 hover:bg-primary-opacity-05`;
       case 'danger':
-        return `border ${this.focusState} text-white danger hover:danger-bright active:danger-dark`;
+        return `border ${this.focusState} text-white bg-danger hover:bg-danger-bright active:bg-danger-dark`;
       default:
-        return `border ${this.focusState} text-body body hover:text-body-bright active:text-body-dark active:gray-1`;
+        return `border ${this.focusState} text-body bg-body hover:text-body-bright active:text-body-dark active:bg-gray-1`;
     }
   }
 
@@ -192,8 +187,8 @@ class Button extends React.Component<Props, State> {
       this.size,
       this.props.transition,
       this.zIndex
-    ].filter(value => typeof value !== 'undefined' || value !== null)
-    return list.join(' ')
+    ]
+    return filterClassNameAndToString(list);
   }
 
   render() {
@@ -207,11 +202,13 @@ class Button extends React.Component<Props, State> {
     //  TODO:
     const loading = this.props.loading ? <div className="absolute inset-0 flex items-center justify-center"><LoaderDot color={'text-current'} /></div> : null
     //  TODO:
-    const icon = this.props.icon ? <Icon icon={this.props.icon} style={styles} /> : null
+    const iconClass = filterClassNameAndToString(['Button__icon', this.iconColor, this.iconMargin])
+    const icon = this.props.icon ? <Icon class={iconClass} icon={this.props.icon} style={styles} /> : null
     const text = this.props.text ? <span className={className} style={styles}>{this.props.text}</span> : null;
     //  TODO:
+    const extendClass = filterClassNameAndToString(["Button__extend transform ml-2 -mr-1", this.extendOpacity])
     const extend = this.props.extendIcon ?
-      <Icon icon={this.props.extendIcon} class={["Button__extend transform ml-2 -mr-1", this.extendOpacity].join(' ')} style={styles} /> : null;
+      <Icon icon={this.props.extendIcon} class={extendClass} style={styles} /> : null;
     return (
       <button
         aria-disabled={this.props.disabled}
@@ -239,32 +236,27 @@ class Button extends React.Component<Props, State> {
   onFocus(e: any) {
     this.setState({ focused: true })
     this.input.current?.focus();
-    console.log('focus')
   }
   onBlur() {
     this.setState({ focused: false })
     this.input.current?.blur();
-    console.log('blur')
   }
   onClick(e: React.MouseEvent) {
     if (!this.props.disabled && typeof this.props.onClick === 'function') {
       this.props.onClick(e)
     }
     this.setState({ focused: true })
-    console.log('click');
 
   }
   onMousedown(e: React.MouseEvent) {
     if (!this.props.disabled && typeof this.props.onMousedown === 'function') {
       this.props.onMousedown(e)
     }
-    console.log('mousedown');
   }
   onMouseup(e: React.MouseEvent) {
     if (!this.props.disabled && typeof this.props.onMouseup === 'function') {
       this.props.onMouseup(e)
     }
-    console.log('mouseup');
   }
 }
 
