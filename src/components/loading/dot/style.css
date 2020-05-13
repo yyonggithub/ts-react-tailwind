@@ -14,11 +14,11 @@
   transform-origin: center;
 }
 
-.Loader--dot:nth-child(1) {
+.Loader__dot:nth-child(1) {
   animation: dot-loader-left var(--dot-duration) infinite alternate ease;
 }
 
-.Loader--dot:nth-child(2) {
+.Loader__dot:nth-child(2) {
   animation: dot-loader-right var(--dot-duration) infinite alternate ease;
 }
 

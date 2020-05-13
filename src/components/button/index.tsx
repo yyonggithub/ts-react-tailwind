@@ -3,12 +3,13 @@ import Icon from '../icon';
 import LoaderDot from '../loading/dot'
 import { filterClassNameAndToString } from '../../utils';
 
-type presetType = 'default' | 'primary' | 'secondary' | 'danger' | 'text'
+export type presetType = 'default' | 'primary' | 'secondary' | 'danger' | 'text'
 
-type Props = {
+export type Props = {
   class?: string;
-  ifFocusedColor?: string;
-  elseFocusedColor?: string;
+  // ifFocusedColor?: string;
+  // elseFocusedColor?: string;
+  focusColor?: string[] | string;
   ariaLabel?: string;
   disabled?: boolean;
   loading?: boolean;
@@ -23,6 +24,7 @@ type Props = {
   isOpen?: boolean;
   extendIcon?: string;
   onClick?: Function;
+  onBlur?: Function;
   onMousedown?: Function
   onMouseup?: Function;
 } & Partial<typeof defaultProps>
@@ -106,8 +108,19 @@ class Button extends React.Component<Props, State> {
   }
 
   get focusColor() {
-    const { ifFocusedColor, elseFocusedColor } = this.props
-    return typeof ifFocusedColor === 'string' && this.state.focused ? ifFocusedColor : elseFocusedColor;
+    const { focusColor } = this.props;
+
+    if (typeof focusColor === 'string') return this.state.focused ? focusColor : null;
+
+    if (typeof focusColor === 'undefined' || focusColor.length > 2) return null;
+
+    if (focusColor && focusColor.length === 2) {
+      return this.state.focused ? focusColor[0] : focusColor[1];
+    } else if (focusColor && focusColor.length === 1) {
+      return this.state.focused ? focusColor[0] : null;
+    } else {
+      return null;
+    }
   }
 
   get focusState() {
@@ -135,7 +148,7 @@ class Button extends React.Component<Props, State> {
   get color(): string | undefined {
     const { preset, disabled, color } = this.props;
     if (disabled) return this.props.disabledColor;
-    if (typeof color === 'string') return color;
+    if (typeof color === 'string' && color !== '') return color;
     switch (preset) {
       case 'text':
         return `${this.focusState} text-body hover:bg-gray-1 active:bg-gray-2 active:text-body-dark`;
@@ -199,13 +212,10 @@ class Button extends React.Component<Props, State> {
       }
     }
     const className = ['Button__text truncate flex-grow'].join(' ')
-    //  TODO:
     const loading = this.props.loading ? <div className="absolute inset-0 flex items-center justify-center"><LoaderDot color={'text-current'} /></div> : null
-    //  TODO:
     const iconClass = filterClassNameAndToString(['Button__icon', this.iconColor, this.iconMargin])
     const icon = this.props.icon ? <Icon class={iconClass} icon={this.props.icon} style={styles} /> : null
     const text = this.props.text ? <span className={className} style={styles}>{this.props.text}</span> : null;
-    //  TODO:
     const extendClass = filterClassNameAndToString(["Button__extend transform ml-2 -mr-1", this.extendOpacity])
     const extend = this.props.extendIcon ?
       <Icon icon={this.props.extendIcon} class={extendClass} style={styles} /> : null;
@@ -238,6 +248,9 @@ class Button extends React.Component<Props, State> {
     this.input.current?.focus();
   }
   onBlur() {
+    if (!this.props.disabled && typeof this.props.onBlur === 'function') {
+      this.props.onBlur()
+    }
     this.setState({ focused: false })
     this.input.current?.blur();
   }

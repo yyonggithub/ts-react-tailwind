@@ -3,6 +3,7 @@
     "browserslist",
     "fullhuman",
     "purgecss",
-    "tailwindcss"
+    "tailwindcss",
+    "toggleable"
   ]
 }
