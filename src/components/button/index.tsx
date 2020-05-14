@@ -243,7 +243,7 @@ class Button extends React.Component<Props, State> {
     )
   }
 
-  onFocus(e: any) {
+  onFocus(e: React.FocusEvent) {
     this.setState({ focused: true })
     this.input.current?.focus();
   }

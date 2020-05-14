@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Button from '../../components/button'
 import Icon from '../../components/icon';
 import DocGroup from '../../components/doc-group'
