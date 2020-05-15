@@ -5,16 +5,6 @@ import ButtonModule from './modules/button'
 import ButtonGroupModule from './modules/button-group';
 import CheckBoxModule from './modules/checkbox';
 
-// function App() {
-//   return (
-//     <div>
-//       <ButtonModule />
-//       <ButtonGroupModule />
-//       <CheckBoxModule />
-//     </div>
-//   );
-// }
-
 const Home: React.SFC = () => {
   return (<div>Home</div>)
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { filterClassNameAndToString } from '../../../utils';
+import classnames from 'classnames';
 import './style.css';
 
 type Props = {
@@ -35,7 +35,7 @@ class LoaderDot extends React.Component<Props & typeof defaultProps, {}> {
       "Loader--dot items-center flex flex-shrink-0 justify-center text-center",
       this.props.color,
     ]
-    return filterClassNameAndToString(list)
+    return classnames(list)
   }
   render() {
     return (

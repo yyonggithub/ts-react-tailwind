@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ReactSVG } from 'react-svg'
-import { filterClassNameAndToString } from '../../utils'
+import classnames from 'classnames';
 
 type Props = {
   icon: string;
@@ -22,7 +22,7 @@ class Icon extends React.Component<Props & typeof defaultProps, {}> {
       this.props.transition,
       this.props.class
     ]
-    return filterClassNameAndToString(list)
+    return classnames(list)
   }
   render() {
     const style = {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { filterClassNameAndToString } from '../../../utils';
+import classnames from 'classnames';
 import Button from '..';
 import { presetType } from '..'
 
@@ -166,13 +166,15 @@ class ButtonGroup extends React.Component<Props & typeof defaultProps, State> {
   }
 
   get classStr() {
+    const orientation = this.props.orientation === 'vertical' ? '-space-y-px' : '-space-x-px';
     const list = [
       "Button-group min-w-0 max-w-full",
       this.display,
       this.align,
       this.props.outline,
+      orientation,
     ]
-    return filterClassNameAndToString(list);
+    return classnames(list);
   }
 
   getButtonList() {

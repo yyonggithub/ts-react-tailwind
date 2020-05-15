@@ -1,9 +1,10 @@
 import React from 'react';
-import CheckBoxGroup, { Props as CheckboxProps } from '../../components/checkbox/checkbox-group';
+import CheckBoxGroup, { CheckboxGroupProps } from '../../components/checkbox/checkbox-group';
 import DocGroup from '../../components/doc-group';
 import CheckBox from '../../components/checkbox';
 
-const list: CheckboxProps = {
+
+const list: CheckboxGroupProps = {
   onChange: (v) => {
     console.log(v)
   },
@@ -16,7 +17,7 @@ const list: CheckboxProps = {
   ]
 }
 
-const custom: CheckboxProps = {
+const custom: CheckboxGroupProps = {
   onChange: (v) => {
     console.log(v);
   },

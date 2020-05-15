@@ -1,26 +1,29 @@
 import React from 'react';
-import { filterClassNameAndToString } from '../../utils';
+import classnames from 'classnames';
 import Icon from '../icon';
 
-export type Props = {
-  name?: string;
+export type BaseProps = {
   text?: string;
-  value?: string;
   checked?: boolean;
+  name?: string;
   ariaLabel?: string;
+  value?: string;
+  color?: string;
+  focusColor?: string;
   disabled?: boolean;
-  checkboxIcon?: string | boolean;
+  disabledColor?: string;
   iconClass?: string;
   iconSize?: string;
-  focusColor?: string;
-  disabledColor?: string;
-  color?: string;
   required?: boolean;
   iconText?: string;
   onChange?: (v: string, checked: boolean) => void;
 } & Partial<typeof defaultProps>
 
-const defaultProps = {
+export interface Props extends BaseProps {
+  checkboxIcon?: string | boolean;
+}
+
+export const defaultProps = {
   align: 'items-center',
   display: 'inline-flex',
   outline: 'focus:outline-none',
@@ -48,7 +51,7 @@ class CheckBox extends React.Component<Props, State> {
     this.state = {
       focused: false,
       checked: props.checked || false,
-      value: props.value || props.text || '',
+      value: props.value || '',
     }
     this.input = React.createRef();
     this.onClick = this.onClick.bind(this)
@@ -125,7 +128,7 @@ class CheckBox extends React.Component<Props, State> {
       this.props.size,
       this.props.transition,
     ]
-    return filterClassNameAndToString(list)
+    return classnames(list)
   }
 
   render() {
@@ -136,12 +139,12 @@ class CheckBox extends React.Component<Props, State> {
       this.iconClass,
       this.props.transition,
     ]
-    const iconClassString = filterClassNameAndToString(iconClassList)
+    const iconClassString = classnames(iconClassList)
     const checkboxIcon = this.checkboxIcon ?
       <Icon class={iconClassString} icon={this.checkboxIcon} size={this.props.iconSize} /> : null;
 
     const text = this.props.text ?
-      <span className={["Checkbox__text leading-normal", this.props.iconText, this.props.truncate, 'ml-2'].join(' ')}>{this.props.text}</span> : null
+      <span className={classnames(["Checkbox__text leading-normal", this.props.iconText, this.props.truncate, { 'ml-2': this.checkboxIcon }])}>{this.props.text}</span> : null
 
     return (
       <label
@@ -158,8 +161,8 @@ class CheckBox extends React.Component<Props, State> {
           name={this.props.name}
           required={this.props.required}
           value={value}
-          // checked={checked}
-          defaultChecked={checked}
+          checked={checked}
+          // defaultChecked={checked}
           onChange={this.onClick}
           // onClick={this.onClick}
           onFocus={this.onFocus}

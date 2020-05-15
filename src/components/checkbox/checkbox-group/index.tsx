@@ -1,8 +1,7 @@
 import React from 'react'
-import CheckBox from '.'
-import { Props as CheckboxProps } from './index'
+import CheckBox, { Props as CheckboxProps } from '../index'
 
-export type Props = {
+export type CheckboxGroupProps = {
   text?: string;
   value?: string;
   checked?: boolean;
@@ -18,11 +17,11 @@ type DefaultValue = { value: string[], onChecked: (value: string, checked: boole
 
 export const CheckBoxContext = React.createContext({} as DefaultValue);
 
-class CheckBoxGroup extends React.Component<Props, State>  {
+class CheckBoxGroup extends React.Component<CheckboxGroupProps, State>  {
   state: State = {
     value: []
   }
-  constructor(props: Props) {
+  constructor(props: CheckboxGroupProps) {
     super(props)
     const { options } = props;
     let arr: string[] = []
@@ -63,7 +62,7 @@ class CheckBoxGroup extends React.Component<Props, State>  {
         <div key={index}>
           <CheckBoxContext.Consumer>
             {({ onChecked }) => (
-              <CheckBox text={item.text} value={item.value} onChange={onChecked} checked={item.checked} {...item}/>
+              <CheckBox text={item.text} value={item.value} onChange={onChecked} checked={item.checked} {...item} />
             )}
           </CheckBoxContext.Consumer>
         </div>

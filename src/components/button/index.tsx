@@ -1,7 +1,7 @@
 import * as React from 'react';
+import classnames from 'classnames';
 import Icon from '../icon';
 import LoaderDot from '../loading/dot'
-import { filterClassNameAndToString } from '../../utils';
 
 export type presetType = 'default' | 'primary' | 'secondary' | 'danger' | 'text'
 
@@ -201,7 +201,7 @@ class Button extends React.Component<Props, State> {
       this.props.transition,
       this.zIndex
     ]
-    return filterClassNameAndToString(list);
+    return classnames(list);
   }
 
   render() {
@@ -211,12 +211,12 @@ class Button extends React.Component<Props, State> {
         visibility: 'hidden'
       }
     }
-    const className = ['Button__text truncate flex-grow'].join(' ')
     const loading = this.props.loading ? <div className="absolute inset-0 flex items-center justify-center"><LoaderDot color={'text-current'} /></div> : null
-    const iconClass = filterClassNameAndToString(['Button__icon', this.iconColor, this.iconMargin])
+    const iconClass = classnames(['Button__icon', this.iconColor, this.iconMargin, { invisible: this.props.loading }])
+    const textClass = classnames(['Button__text truncate flex-grow', { invisible: this.props.loading }])
     const icon = this.props.icon ? <Icon class={iconClass} icon={this.props.icon} style={styles} /> : null
-    const text = this.props.text ? <span className={className} style={styles}>{this.props.text}</span> : null;
-    const extendClass = filterClassNameAndToString(["Button__extend transform ml-2 -mr-1", this.extendOpacity])
+    const text = this.props.text ? <span className={textClass} style={styles}>{this.props.text}</span> : null;
+    const extendClass = classnames(["Button__extend transform ml-2 -mr-1", this.extendOpacity, { invisible: this.props.extendIcon }])
     const extend = this.props.extendIcon ?
       <Icon icon={this.props.extendIcon} class={extendClass} style={styles} /> : null;
     return (
