@@ -4,7 +4,6 @@ import Icon from '../icon';
 
 export type BaseProps = {
   text?: string;
-  checked?: boolean;
   name?: string;
   ariaLabel?: string;
   value?: string;
@@ -15,12 +14,13 @@ export type BaseProps = {
   iconClass?: string;
   iconSize?: string;
   required?: boolean;
+  checked?: boolean;
   iconText?: string;
-  onChange?: (v: string, checked: boolean) => void;
 } & Partial<typeof defaultProps>
 
 export interface Props extends BaseProps {
   checkboxIcon?: string | boolean;
+  onChange?: (v: string, checked: boolean) => void;
 }
 
 export const defaultProps = {

@@ -1,70 +1,63 @@
 import React from 'react';
-import { filterClassNameAndToString } from '../../utils';
+import classnames from 'classnames';
+import { BaseProps, defaultProps } from '../checkbox'
+import Icon from '../icon';
+// TODO:
 
-type Props = {
-  text: string;
-  checked: boolean | "false" | "mixed" | "true";
-  disabled: boolean;
-  ariaLabel: string;
-  align: string;
-  color: string;
-  cursor: string;
-  display: string;
-  outline: string;
-  padding: string;
-  radius: string;
-  size: string;
-  transition: string;
-  id: string;
-  checkboxIcon: string[] | boolean;
-  iconClass: string;
-  focusColor: string;
-  disabledColor: string;
-}
-
-const defaultProps = {
-  align: 'items-center',
-  display: 'inline-flex',
-  outline: 'focus:outline-none',
-  truncate: 'truncate',
-  padding: '-mx-1 px-1',
-  size: 'min-h-6',
-  radius: 'rounded',
-  transition: 'transition ease-in-out duration-200',
+export interface RadioProps extends BaseProps {
+  defaultValue?: string;
+  radioIcon?: string | boolean;
+  textClass?: string;
+  onChange?: (v: string, checked: boolean) => void
 }
 
 type State = {
+  value: string;
+  checked: boolean;
   focused: boolean;
 }
 
-class Radio extends React.Component<Props, State> {
+class Radio extends React.Component<RadioProps, State> {
+  static defaultProps = defaultProps
 
-  constructor(props: Props) {
+  input: React.RefObject<HTMLInputElement>;
+
+  constructor(props: RadioProps) {
     super(props)
     this.state = {
+      value: props.value || '',
+      checked: this.props.checked || false,
       focused: false,
     }
+    console.log(this.state);
+
+    this.input = React.createRef();
   }
 
   get cursor() {
     return this.props.disabled ? 'cursor-default' : 'cursor-pointer';
   }
+  get ariaLabel() {
+    return this.props.ariaLabel || this.props.text || undefined;
+  }
 
-  get checkboxIcon() {
-    const { checkboxIcon, checked } = this.props;
-    if (checkboxIcon === false) return false;
-    if (checkboxIcon && Array.isArray(checkboxIcon) && checkboxIcon.length === 2) {
-      return checked ? checkboxIcon[0] : checkboxIcon[1];
+  get radioIcon() {
+    const { radioIcon } = this.props;
+    if (radioIcon === false) return false;
+
+    if (radioIcon && Array.isArray(radioIcon) && radioIcon.length === 2) {
+      return this.state.checked ? radioIcon[0] : radioIcon[1];
     } else {
-      return checked ? '#glyph-checkbox-checked-16' : '#outline-checkbox-16';
+      return this.state.checked ? 'glyph-radio--checked-16' : 'outline-radio-16';
     }
   }
 
   get iconClass() {
-    const { disabled, checked, iconClass } = this.props;
-    if (disabled) return checked ? 'text-gray-5' : 'text-gray-3';
+    const { disabled, iconClass } = this.props;
+
+    if (disabled) return this.state.checked ? 'text-gray-5' : 'text-gray-3';
     if (typeof iconClass === 'string') return iconClass;
-    return checked || this.state.focused ? 'text-primary' : 'text-gray-5';
+    return this.state.checked || this.state.focused ? 'text-primary' : 'text-gray-5';
   }
 
   get focusColor() {
@@ -90,25 +83,82 @@ class Radio extends React.Component<Props, State> {
 
   get classString() {
     const list = [
-      'Raido relative',
+      'Radio relative',
       this.props.align,
-
+      this.color,
+      this.cursor,
+      this.props.display,
+      this.props.outline,
+      this.props.padding,
+      this.props.radius,
+      this.props.size,
+      this.props.transition,
     ]
-    return filterClassNameAndToString(list);
+    return classnames(list);
+  }
+
+  onClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // let value = e.target.value;
+    const { value } = this.state
+    if (this.props.disabled) return;
+
+    if (this.props.onChange && typeof this.props.onChange === 'function') {
+      this.props.onChange(value, e.target.checked);
+    } else {
+      this.setState({
+        checked: e.target.checked,
+      })
+    }
+  }
+  onFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    this.setState({ focused: true })
+    this.input.current?.focus();
   }
 
   render() {
-    const checked = this.props.checked || false;
-    const disabled = this.props.disabled || false;
-    const ariaLabel = this.props.ariaLabel || this.props.text || undefined;
+    // const checked = this.props.value === this.state.value;
+    console.log(this.props.value, this.props.checked);
+    const checked = this.props.checked || this.state.checked;
+    const iconClassList = [
+      "Radio__icon rounded-full",
+      this.props.iconClass,
+      this.focusColor,
+      this.iconClass,
+      this.props.transition,
+    ]
+    const iconClassString = classnames(iconClassList)
+    const checkboxIcon = this.radioIcon ?
+      <Icon class={iconClassString} icon={this.radioIcon} size={this.props.iconSize} /> : null;
 
+    const text = this.props.text ?
+      <span className={classnames(["Radio__text leading-normal", this.props.textClass, this.props.truncate, { 'ml-2': this.radioIcon }])}>{this.props.text}</span> : null
+
+    const type = 'radio'
     return (
       <label
         aria-checked={checked}
-        aria-disabled={disabled}
-        aria-label={ariaLabel}
+        aria-disabled={this.props.disabled}
+        aria-label={this.ariaLabel}
         className={this.classString}
-      ></label>
+        role={type}
+      >
+        <input
+          type={type}
+          className="absolute inset-y-0 left-0 w-full h-4 my-auto opacity-0 Radio__input pointer-events-none"
+          disabled={this.props.disabled}
+          name={this.props.name}
+          required={this.props.required}
+          value={this.props.value}
+          checked={checked}
+          // defaultChecked={checked}
+          onChange={this.onClick}
+          // onClick={this.onClick}
+          onFocus={this.onFocus}
+        />
+        {this.props.children}
+        {checkboxIcon}
+        {text}
+      </label>
     )
   }
 
