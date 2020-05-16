@@ -12,7 +12,7 @@ type State = {
   checked: boolean;
 }
 
-const RadioContext = React.createContext({} as DefaultValue)
+// const RadioContext = React.createContext({} as DefaultValue)
 
 type RadioProps = {
   text?: string;

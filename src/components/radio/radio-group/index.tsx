@@ -44,12 +44,13 @@ class RadioGroup extends React.Component<RadioGroupProps, State> {
   }
   render() {
     const radios = this.props.options.map((item, index) => {
-      const { onChange: handleChange, value, checked, ...rest } = item
+      const { onChange: handleChange, value, checked: ck, ...rest } = item
+      const checked = this.state.value === item.value
       return (
         <div key={index}>
           <RadioContext.Consumer>
             {({ value, onChange }) => {
-              return <Radio onChange={onChange} checked={item.value === value} value={item.value} {...rest} />
+              return <Radio onChange={onChange} checked={checked} value={item.value} {...rest} />
             }}
           </RadioContext.Consumer>
         </div>

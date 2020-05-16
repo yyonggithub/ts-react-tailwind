@@ -6,7 +6,7 @@ import Icon from '../icon';
 
 export interface RadioProps extends BaseProps {
   defaultValue?: string;
-  radioIcon?: string | boolean;
+  radioIcon?: string[] | boolean;
   textClass?: string;
   onChange?: (v: string, checked: boolean) => void
 }
@@ -46,18 +46,18 @@ class Radio extends React.Component<RadioProps, State> {
     if (radioIcon === false) return false;
 
     if (radioIcon && Array.isArray(radioIcon) && radioIcon.length === 2) {
-      return this.state.checked ? radioIcon[0] : radioIcon[1];
+      return this.checked ? radioIcon[0] : radioIcon[1];
     } else {
-      return this.state.checked ? 'glyph-radio--checked-16' : 'outline-radio-16';
+      return this.checked ? 'glyph-radio--checked-16' : 'outline-radio-16';
     }
   }
 
   get iconClass() {
     const { disabled, iconClass } = this.props;
 
-    if (disabled) return this.state.checked ? 'text-gray-5' : 'text-gray-3';
+    if (disabled) return this.checked ? 'text-gray-5' : 'text-gray-3';
     if (typeof iconClass === 'string') return iconClass;
-    return this.state.checked || this.state.focused ? 'text-primary' : 'text-gray-5';
+    return this.checked || this.state.focused ? 'text-primary' : 'text-gray-5';
   }
 
   get focusColor() {
@@ -80,6 +80,12 @@ class Radio extends React.Component<RadioProps, State> {
     return 'hover:bg-gray-1';
   }
 
+  get checked(){
+    if('onChange' in this.props && typeof this.props.onChange === 'function'){
+      return this.props.checked;
+    }
+    return this.state.checked
+  }
 
   get classString() {
     const list = [
@@ -118,7 +124,7 @@ class Radio extends React.Component<RadioProps, State> {
   render() {
     // const checked = this.props.value === this.state.value;
     console.log(this.props.value, this.props.checked);
-    const checked = this.props.checked || this.state.checked;
+    const checked = this.checked
     const iconClassList = [
       "Radio__icon rounded-full",
       this.props.iconClass,
