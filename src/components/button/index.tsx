@@ -2,11 +2,12 @@ import * as React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon';
 import LoaderDot from '../loading/dot'
+import { ClassType } from '../../interface';
 
 export type presetType = 'default' | 'primary' | 'secondary' | 'danger' | 'text'
 
 export type Props = {
-  class?: string;
+  className?: ClassType;
   // ifFocusedColor?: string;
   // elseFocusedColor?: string;
   focusColor?: string[] | string;
@@ -185,7 +186,7 @@ class Button extends React.Component<Props, State> {
   get classStr() {
     const list = [
       "Button relative group min-w-0 max-w-full",
-      this.props.class,
+      this.props.className,
       this.props.align,
       this.color,
       this.cursor,

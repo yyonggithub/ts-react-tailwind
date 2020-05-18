@@ -5,8 +5,6 @@ type DefaultValue = {
   onChange: (v: string) => void
 }
 
-
-
 type State = {
   value: string;
   checked: boolean;

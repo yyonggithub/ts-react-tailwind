@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { ReactSVG } from 'react-svg'
 import classnames from 'classnames';
+import { ClassType } from '../../interface';
 
 type Props = {
   icon: string;
-  className?: string;
+  className?: ClassType
   style?: any
 } & Partial<typeof defaultProps>
 

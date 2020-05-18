@@ -1,8 +1,9 @@
 import * as React from "react";
 import classnames from 'classnames'
+import { ClassType } from "../../interface";
 
 type Props = {
-  className?: string | { [prop: string]: boolean } | (string | { [prop: string]: boolean })[];
+  className?: ClassType
   name: string;
   children: React.ReactNode;
 }

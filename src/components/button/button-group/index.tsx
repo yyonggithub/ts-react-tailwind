@@ -196,7 +196,7 @@ class ButtonGroup extends React.Component<Props & typeof defaultProps, State> {
       return (
         < Button
           key={index}
-          class={index > 0 ? (this.props.orientation === 'vertical' ? '-mt-px' : '-ml-px') : ''}
+          className={index > 0 ? (this.props.orientation === 'vertical' ? '-mt-px' : '-ml-px') : ''}
           // color={this.selectedColor}
           color={selected && this.state.selected[index].selected ? selectedColor : childColor}
           disabled={disabled}
