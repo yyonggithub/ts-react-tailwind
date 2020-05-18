@@ -214,11 +214,11 @@ class Button extends React.Component<Props, State> {
     const loading = this.props.loading ? <div className="absolute inset-0 flex items-center justify-center"><LoaderDot color={'text-current'} /></div> : null
     const iconClass = classnames(['Button__icon', this.iconColor, this.iconMargin, { invisible: this.props.loading }])
     const textClass = classnames(['Button__text truncate flex-grow', { invisible: this.props.loading }])
-    const icon = this.props.icon ? <Icon class={iconClass} icon={this.props.icon} style={styles} /> : null
+    const icon = this.props.icon ? <Icon className={iconClass} icon={this.props.icon} style={styles} /> : null
     const text = this.props.text ? <span className={textClass} style={styles}>{this.props.text}</span> : null;
     const extendClass = classnames(["Button__extend transform ml-2 -mr-1", this.extendOpacity, { invisible: this.props.extendIcon }])
     const extend = this.props.extendIcon ?
-      <Icon icon={this.props.extendIcon} class={extendClass} style={styles} /> : null;
+      <Icon icon={this.props.extendIcon} className={extendClass} style={styles} /> : null;
     return (
       <button
         aria-disabled={this.props.disabled}

@@ -134,7 +134,7 @@ class Radio extends React.Component<RadioProps, State> {
     ]
     const iconClassString = classnames(iconClassList)
     const checkboxIcon = this.radioIcon ?
-      <Icon class={iconClassString} icon={this.radioIcon} size={this.props.iconSize} /> : null;
+      <Icon className={iconClassString} icon={this.radioIcon} size={this.props.iconSize} /> : null;
 
     const text = this.props.text ?
       <span className={classnames(["Radio__text leading-normal", this.props.textClass, this.props.truncate, { 'ml-2': this.radioIcon }])}>{this.props.text}</span> : null

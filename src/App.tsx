@@ -9,6 +9,7 @@ import RadioModule from './modules/radio';
 import LoadingDotModule from './modules/loading/dot';
 import LoadingBarModule from './modules/loading/bar';
 import LoadingCircleModule from './modules/loading/circle'
+import IconModule from './modules/icon'
 
 const Home: React.SFC = () => {
   return (<div>Home</div>)
@@ -27,6 +28,7 @@ const App: React.SFC = () => (
         <li><Link to="/LoadingDotModule">LoadingDotModule</Link></li>
         <li><Link to="/LoadingBarModule">LoadingBarModule</Link></li>
         <li><Link to="/LoadingCircleModule">LoadingCircleModule</Link></li>
+        <li><Link to="/IconModule">IconModule</Link></li>
       </ul>
 
       <hr />
@@ -40,6 +42,7 @@ const App: React.SFC = () => (
       <Route path="/LoadingDotModule" component={LoadingDotModule} />
       <Route path="/LoadingBarModule" component={LoadingBarModule} />
       <Route path="/LoadingCircleModule" component={LoadingCircleModule} />
+      <Route path="/IconModule" component={IconModule} />
     </div>
   </Router>
 )

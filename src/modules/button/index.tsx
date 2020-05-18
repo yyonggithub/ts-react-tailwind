@@ -28,7 +28,7 @@ class ButtonModule extends React.Component {
           <Button text="Text" icon="edit-levels" preset="text" />
           <Button preset="primary" >
             <span>Block</span>
-            <Icon class="ml-2 -mr-1" icon="c-question" />
+            <Icon className="ml-2 -mr-1" icon="c-question" />
           </Button>
         </DocGroup>
         <DocGroup name="icon">
@@ -102,7 +102,7 @@ class ButtonModule extends React.Component {
           <Button>
             <label htmlFor="upload" className="flex items-center">
               File Upload
-              <Icon class="-mr-1 ml-2" icon="#app" />
+              <Icon className="-mr-1 ml-2" icon="#app" />
             </label>
             <input id="upload" type="file" className="appearance-none hidden" />
           </Button>

@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 type Props = {
   icon: string;
-  class?: string;
+  className?: string;
   style?: any
 } & Partial<typeof defaultProps>
 
@@ -20,7 +20,7 @@ class Icon extends React.Component<Props & typeof defaultProps, {}> {
     const list = [
       'Icon pointer-events-none flex-shrink-0',
       this.props.transition,
-      this.props.class
+      this.props.className
     ]
     return classnames(list)
   }

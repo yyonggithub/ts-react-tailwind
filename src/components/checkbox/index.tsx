@@ -141,7 +141,7 @@ class CheckBox extends React.Component<Props, State> {
     ]
     const iconClassString = classnames(iconClassList)
     const checkboxIcon = this.checkboxIcon ?
-      <Icon class={iconClassString} icon={this.checkboxIcon} size={this.props.iconSize} /> : null;
+      <Icon className={iconClassString} icon={this.checkboxIcon} size={this.props.iconSize} /> : null;
 
     const text = this.props.text ?
       <span className={classnames(["Checkbox__text leading-normal", this.props.iconText, this.props.truncate, { 'ml-2': this.checkboxIcon }])}>{this.props.text}</span> : null
