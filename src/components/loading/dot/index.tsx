@@ -2,7 +2,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import './style.css';
 
-type Props = {
+export type LoaderDotProps = {
   outColor?: string;
   size?: string;
   duration?: string;
@@ -12,7 +12,7 @@ const defaultProps = {
   color: 'text-gray-5'
 }
 
-class LoaderDot extends React.Component<Props & typeof defaultProps, {}> {
+class LoaderDot extends React.Component<LoaderDotProps & typeof defaultProps, {}> {
   static defaultProps = defaultProps
   get cssVar() {
     const style: any = {

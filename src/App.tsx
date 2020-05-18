@@ -5,6 +5,10 @@ import ButtonModule from './modules/button'
 import ButtonGroupModule from './modules/button-group';
 import CheckBoxModule from './modules/checkbox';
 import RadioModule from './modules/radio';
+// import InputModule from './modules/input';
+import LoadingDotModule from './modules/loading/dot';
+import LoadingBarModule from './modules/loading/bar';
+import LoadingCircleModule from './modules/loading/circle'
 
 const Home: React.SFC = () => {
   return (<div>Home</div>)
@@ -19,6 +23,10 @@ const App: React.SFC = () => (
         <li><Link to="/ButtonGroupModule">ButtonGroupModule</Link></li>
         <li><Link to="/CheckBoxModule">CheckBoxModule</Link></li>
         <li><Link to="/RadioModule">RadioModule</Link></li>
+        {/* <li><Link to="/InputModule">InputModule</Link></li> */}
+        <li><Link to="/LoadingDotModule">LoadingDotModule</Link></li>
+        <li><Link to="/LoadingBarModule">LoadingBarModule</Link></li>
+        <li><Link to="/LoadingCircleModule">LoadingCircleModule</Link></li>
       </ul>
 
       <hr />
@@ -28,6 +36,10 @@ const App: React.SFC = () => (
       <Route path="/ButtonGroupModule" component={ButtonGroupModule} />
       <Route path="/CheckBoxModule" component={CheckBoxModule} />
       <Route path="/RadioModule" component={RadioModule} />
+      {/* <Route path="/InputModule" component={InputModule} /> */}
+      <Route path="/LoadingDotModule" component={LoadingDotModule} />
+      <Route path="/LoadingBarModule" component={LoadingBarModule} />
+      <Route path="/LoadingCircleModule" component={LoadingCircleModule} />
     </div>
   </Router>
 )

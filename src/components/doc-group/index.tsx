@@ -1,14 +1,17 @@
 import * as React from "react";
+import classnames from 'classnames'
+
 type Props = {
+  className?: string | { [prop: string]: boolean } | (string | { [prop: string]: boolean })[];
   name: string;
   children: React.ReactNode;
 }
 
-const DocGroup: React.SFC<Props> = ({ name, children }) => {
+const DocGroup: React.SFC<Props> = ({ name, children, className }) => {
   return (
     <div className="docs-rounded docs-border docs-border-grey-lighter docs-my-8">
       <p>{name}</p>
-      <div className="docs-p-4 flex items-center space-x-4">
+      <div className={classnames("docs-p-4 flex items-center space-x-4", className)}>
         {children}
       </div>
     </div>
