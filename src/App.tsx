@@ -10,6 +10,9 @@ import LoadingDotModule from './modules/loading/dot';
 import LoadingBarModule from './modules/loading/bar';
 import LoadingCircleModule from './modules/loading/circle'
 import IconModule from './modules/icon'
+import SwitchModule from './modules/switch';
+import ProgressBarModule from './modules/progress-bar';
+import ProgressCircleModule from './modules/progress-circle';
 
 const Home: React.SFC = () => {
   return (<div>Home</div>)
@@ -24,11 +27,14 @@ const App: React.SFC = () => (
         <li><Link to="/ButtonGroupModule">ButtonGroupModule</Link></li>
         <li><Link to="/CheckBoxModule">CheckBoxModule</Link></li>
         <li><Link to="/RadioModule">RadioModule</Link></li>
-        {/* <li><Link to="/InputModule">InputModule</Link></li> */}
+        <li><Link to="/InputModule">InputModule</Link></li>
         <li><Link to="/LoadingDotModule">LoadingDotModule</Link></li>
         <li><Link to="/LoadingBarModule">LoadingBarModule</Link></li>
         <li><Link to="/LoadingCircleModule">LoadingCircleModule</Link></li>
         <li><Link to="/IconModule">IconModule</Link></li>
+        <li><Link to="/SwitchModule">SwitchModule</Link></li>
+        <li><Link to="/ProgressBarModule">ProgressBarModule</Link></li>
+        <li><Link to="/ProgressCircleModule">ProgressCircleModule</Link></li>
       </ul>
 
       <hr />
@@ -43,6 +49,9 @@ const App: React.SFC = () => (
       <Route path="/LoadingBarModule" component={LoadingBarModule} />
       <Route path="/LoadingCircleModule" component={LoadingCircleModule} />
       <Route path="/IconModule" component={IconModule} />
+      <Route path="/SwitchModule" component={SwitchModule} />
+      <Route path="/ProgressBarModule" component={ProgressBarModule} />
+      <Route path="/ProgressCircleModule" component={ProgressCircleModule} />
     </div>
   </Router>
 )
