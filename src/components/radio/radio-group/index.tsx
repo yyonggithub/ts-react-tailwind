@@ -1,8 +1,6 @@
 import React from 'react'
 import Radio, { RadioProps } from '../index'
 
-// TODO:
-
 export type RadioGroupProps = {
   text?: string;
   value?: string;

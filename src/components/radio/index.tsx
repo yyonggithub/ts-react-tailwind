@@ -2,7 +2,6 @@ import React from 'react';
 import classnames from 'classnames';
 import { BaseProps, defaultProps } from '../checkbox'
 import Icon from '../icon';
-// TODO:
 
 export interface RadioProps extends BaseProps {
   defaultValue?: string;
