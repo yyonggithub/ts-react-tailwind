@@ -2,6 +2,7 @@ import React, { SFC, Fragment } from "react";
 import DocGroup from "../../components/doc-group";
 import Alert from "../../components/alert";
 import Button from "../../components/button";
+import Divider from "../../components/divider";
 
 const AlertModule: SFC = () => {
   return (
@@ -35,7 +36,7 @@ const AlertModule: SFC = () => {
             example text is going to run a bit longer so that you can see how
             spacing within an alert works with this kind of content.
           </p>
-          {/* <Divider className="my-4 opacity-50" /> */}
+          <Divider className="my-4 opacity-50" />
           <div className="flex items-center">
             <p className="flex-grow text-sm">
               Whenever you need to, be sure to use margin utilities to keep
