@@ -21,7 +21,7 @@ export type Option = {
 
 type Preset = presetType
 
-export type Props = {
+export type ButtonGroupProps = {
   multiple?: boolean;
   selector?: boolean;
   size?: string;
@@ -62,14 +62,14 @@ type State = {
 //   return false;
 // }
 
-class ButtonGroup extends React.Component<Props & typeof defaultProps, State> {
+class ButtonGroup extends React.Component<ButtonGroupProps, State> {
 
   static defaultProps = defaultProps;
 
-  constructor(props: any) {
+  constructor(props: ButtonGroupProps) {
     super(props)
     // if (hasSelected(props)) {
-    const { options } = props as Props;
+    const { options } = props;
     let list: { index: number, text: string, selected: boolean }[] = [];
     options.forEach((item, index: number) => {
       list.push(

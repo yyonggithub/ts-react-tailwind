@@ -24,8 +24,8 @@
     "eject": "react-scripts eject",
     "build:css": "postcss src/styles/tailwind.css -o src/styles/tailwind.bundle.css",
     "watch:css": "postcss src/styles/tailwind.css -o src/styles/tailwind.bundle.css -w",
-    "start:lib":"styleguidist server",
-    "build:lib":"styleguidist build"
+    "start:lib": "styleguidist server",
+    "build:lib": "styleguidist build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,6 +48,7 @@
     "@types/react": "^16.9.35",
     "@types/react-router-dom": "^5.1.5",
     "classnames": "^2.2.6",
+    "node-sass": "^4.14.1",
     "postcss-preset-env": "^6.7.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",

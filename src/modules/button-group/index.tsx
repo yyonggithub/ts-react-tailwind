@@ -1,10 +1,7 @@
 import * as React from "react";
-import ButtonGroup, { Option } from "../../components/button/button-group";
+import { Option } from "../../components/button/button-group";
 import DocGroup from "../../components/doc-group";
-
-type Props = {
-  // children: React.ReactNode
-};
+import Button from "../../components/button";
 
 const def = {
   options: [
@@ -54,85 +51,88 @@ const comb: { options: Option[] } = {
   ],
 };
 
-const ButtonGroupModule: React.SFC<Props> = () => {
+const ButtonGroupModule: React.SFC = () => {
   return (
     <React.Fragment>
       <DocGroup name="default">
-        <ButtonGroup options={def.options} />
+        <Button.Group options={def.options} />
       </DocGroup>
       <DocGroup name="size">
-        <ButtonGroup options={def.options} size="h-6" />
-        <ButtonGroup options={def.options} size="h-10" />
+        <Button.Group options={def.options} size="h-6" />
+        <Button.Group options={def.options} size="h-10" />
       </DocGroup>
       <DocGroup name="preset">
-        <ButtonGroup options={def.options} preset="primary" />
-        <ButtonGroup options={def.options} preset="secondary" />
+        <Button.Group options={def.options} preset="primary" />
+        <Button.Group options={def.options} preset="secondary" />
       </DocGroup>
       <DocGroup name="combination & radius">
-        <ButtonGroup
+        <Button.Group
           radius="first:rounded-l-full"
           options={def.options}
-        ></ButtonGroup>
-        <ButtonGroup
+        ></Button.Group>
+        <Button.Group
           radius="last:rounded-r-full"
           options={def.options}
-        ></ButtonGroup>
+        ></Button.Group>
       </DocGroup>
       <DocGroup name="direction">
-        <ButtonGroup orientation="vertical" options={def.options}></ButtonGroup>
-        <ButtonGroup
+        <Button.Group
+          orientation="vertical"
+          options={def.options}
+        ></Button.Group>
+        <Button.Group
           preset="primary"
           orientation="vertical"
           options={def.options}
-        ></ButtonGroup>
-        <ButtonGroup
+        ></Button.Group>
+        <Button.Group
           preset="secondary"
           orientation="vertical"
           options={def.options}
-        ></ButtonGroup>
+        ></Button.Group>
       </DocGroup>
       <DocGroup name="selector">
-        <ButtonGroup selector={true} options={def.options}></ButtonGroup>
-        <ButtonGroup
+        <Button.Group selector={true} options={def.options}></Button.Group>
+        <Button.Group
           selector={true}
           preset={"primary"}
           options={def.options}
-        ></ButtonGroup>
-        <ButtonGroup
+        ></Button.Group>
+        <Button.Group
           selector={true}
           preset={"secondary"}
           options={def.options}
-        ></ButtonGroup>
+        ></Button.Group>
       </DocGroup>
       <DocGroup name="toggleable">
-        <ButtonGroup
+        <Button.Group
           multiple={true}
           selector={true}
           toggleable={true}
           options={def.options}
-        ></ButtonGroup>
+        ></Button.Group>
       </DocGroup>
       <DocGroup name="disabled">
-        <ButtonGroup disabled={true} options={def.options}></ButtonGroup>
-        <ButtonGroup
+        <Button.Group disabled={true} options={def.options}></Button.Group>
+        <Button.Group
           disabled={true}
           disabledColor="border border-gray-8 text-gray-3 bg-gray-7"
           options={def.options}
-        ></ButtonGroup>
+        ></Button.Group>
       </DocGroup>
       <DocGroup name="disabled">
-        <ButtonGroup
+        <Button.Group
           // disabled={true}
           options={disabled.options}
           selector={true}
-        ></ButtonGroup>
+        ></Button.Group>
       </DocGroup>
       <DocGroup name="comb">
-        <ButtonGroup
+        <Button.Group
           // disabled={true}
           options={comb.options}
           selector={true}
-        ></ButtonGroup>
+        ></Button.Group>
       </DocGroup>
     </React.Fragment>
   );

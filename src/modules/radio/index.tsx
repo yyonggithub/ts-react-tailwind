@@ -2,9 +2,7 @@ import React from "react";
 import DocGroup from "../../components/doc-group";
 // import Radio from '../../components/radio/radio';
 import Radio from "../../components/radio";
-import RadioGroup, {
-  RadioGroupProps,
-} from "../../components/radio/radio-group";
+import { RadioGroupProps } from "../../components/radio/radio-group";
 
 const group: RadioGroupProps = {
   defaultValue: "Disabled checked",
@@ -50,7 +48,7 @@ const RadioModule: React.SFC = () => {
         <Radio value="radio 1" text="Radio 1" />
       </DocGroup>
       <DocGroup name="group">
-        <RadioGroup {...group} />
+        <Radio.Group {...group} />
       </DocGroup>
       <DocGroup name="block text">
         <Radio value="block text">
@@ -58,7 +56,7 @@ const RadioModule: React.SFC = () => {
         </Radio>
       </DocGroup>
       <DocGroup name="custom">
-        <RadioGroup {...custom} />
+        <Radio.Group {...custom} />
       </DocGroup>
     </React.Fragment>
   );

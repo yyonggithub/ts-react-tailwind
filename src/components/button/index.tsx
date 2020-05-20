@@ -3,6 +3,7 @@ import classnames from "classnames";
 import Icon from "../icon";
 import LoaderDot from "../loading/loading-dot";
 import { classnamesType } from "../../interface";
+import ButtonGroup from "./button-group";
 
 export type presetType =
   | "default"
@@ -29,6 +30,7 @@ export type Props = {
   iconColor?: string;
   isOpen?: boolean;
   extendIcon?: string;
+  zIndex?: string;
   onClick?: Function;
   onBlur?: Function;
   onMousedown?: Function;
@@ -54,6 +56,9 @@ const defaultProps = {
 };
 
 class Button extends React.Component<Props, State> {
+
+  static Group = ButtonGroup
+
   static defaultProps = defaultProps;
 
   input: React.RefObject<HTMLButtonElement>;
@@ -76,7 +81,8 @@ class Button extends React.Component<Props, State> {
   }
 
   get zIndex() {
-    return this.state.focused ? "z-2" : null;
+    const zIndex = "zIndex" in this.props ? this.props.zIndex : "z-2";
+    return this.state.focused ? zIndex : null;
   }
 
   get cursor() {

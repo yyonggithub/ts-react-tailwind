@@ -2,6 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import { BaseProps, defaultProps } from "../checkbox";
 import Icon from "../icon";
+import RadioGroup from "./radio-group";
 
 export interface RadioProps extends BaseProps {
   defaultValue?: string;
@@ -17,6 +18,8 @@ type State = {
 };
 
 class Radio extends React.Component<RadioProps, State> {
+  static Group = RadioGroup
+
   static defaultProps = defaultProps;
 
   input: React.RefObject<HTMLInputElement>;

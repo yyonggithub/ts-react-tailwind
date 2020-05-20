@@ -1,6 +1,7 @@
-import React from 'react';
-import classnames from 'classnames';
-import Icon from '../icon';
+import React from "react";
+import classnames from "classnames";
+import Icon from "../icon";
+import CheckBoxGroup from "./checkbox-group";
 
 export type BaseProps = {
   text?: string;
@@ -16,7 +17,7 @@ export type BaseProps = {
   required?: boolean;
   checked?: boolean;
   iconText?: string;
-} & Partial<typeof defaultProps>
+} & Partial<typeof defaultProps>;
 
 export interface Props extends BaseProps {
   checkboxIcon?: string | boolean;
@@ -24,37 +25,39 @@ export interface Props extends BaseProps {
 }
 
 export const defaultProps = {
-  align: 'items-center',
-  display: 'inline-flex',
-  outline: 'focus:outline-none',
-  truncate: 'truncate',
-  padding: '-mx-1 px-1',
-  size: 'min-h-6',
-  radius: 'rounded',
-  transition: 'transition ease-in-out duration-200',
-}
+  align: "items-center",
+  display: "inline-flex",
+  outline: "focus:outline-none",
+  truncate: "truncate",
+  padding: "-mx-1 px-1",
+  size: "min-h-6",
+  radius: "rounded",
+  transition: "transition ease-in-out duration-200",
+};
 
 type State = {
   value: string;
   checked: boolean;
   focused: boolean;
-}
+};
 
 class CheckBox extends React.Component<Props, State> {
-  static defaultProps = defaultProps
+  static Group = CheckBoxGroup;
+
+  static defaultProps = defaultProps;
 
   input: React.RefObject<HTMLInputElement>;
 
   constructor(props: Props) {
-    super(props)
+    super(props);
 
     this.state = {
       focused: false,
       checked: props.checked || false,
-      value: props.value || '',
-    }
+      value: props.value || "",
+    };
     this.input = React.createRef();
-    this.onClick = this.onClick.bind(this)
+    this.onClick = this.onClick.bind(this);
   }
 
   get ariaLabel() {
@@ -62,7 +65,7 @@ class CheckBox extends React.Component<Props, State> {
   }
 
   get cursor() {
-    return this.props.disabled ? 'cursor-default' : 'cursor-pointer';
+    return this.props.disabled ? "cursor-default" : "cursor-pointer";
   }
 
   get checkboxIcon() {
@@ -70,37 +73,41 @@ class CheckBox extends React.Component<Props, State> {
     const { checked } = this.state;
     // if (checkboxIcon === false) return false;
 
-    if (checkboxIcon && Array.isArray(checkboxIcon) && checkboxIcon.length === 2) {
+    if (
+      checkboxIcon &&
+      Array.isArray(checkboxIcon) &&
+      checkboxIcon.length === 2
+    ) {
       return checked ? checkboxIcon[0] : checkboxIcon[1];
     } else {
-      return checked ? 'glyph-checkbox--checked-16' : 'outline-checkbox-16';
+      return checked ? "glyph-checkbox--checked-16" : "outline-checkbox-16";
     }
   }
 
   get iconClass() {
     const { disabled, checked, iconClass } = this.props;
 
-    if (disabled) return checked ? 'text-gray-5' : 'text-gray-3';
+    if (disabled) return checked ? "text-gray-5" : "text-gray-3";
 
-    if (typeof iconClass === 'string') return iconClass;
+    if (typeof iconClass === "string") return iconClass;
 
-    return checked || this.state.focused ? 'text-primary' : 'text-gray-5';
+    return checked || this.state.focused ? "text-primary" : "text-gray-5";
   }
 
   get focusColor() {
     const { focusColor } = this.props;
 
-    if (typeof focusColor === 'boolean') return undefined;
+    if (typeof focusColor === "boolean") return undefined;
 
-    if (typeof focusColor === 'string' && this.state.focused) return focusColor;
+    if (typeof focusColor === "string" && this.state.focused) return focusColor;
 
-    return this.state.focused ? 'shadow-outline' : undefined;
+    return this.state.focused ? "shadow-outline" : undefined;
   }
 
   get disabledColor() {
     const { disabledColor } = this.props;
 
-    return typeof disabledColor === 'string' ? disabledColor : 'text-gray-5';
+    return typeof disabledColor === "string" ? disabledColor : "text-gray-5";
   }
 
   get color() {
@@ -110,14 +117,14 @@ class CheckBox extends React.Component<Props, State> {
 
     // if (color === undefined) return undefined;
 
-    if (typeof color === 'string') return color;
+    if (typeof color === "string") return color;
 
-    return 'hover:bg-gray-1';
+    return "hover:bg-gray-1";
   }
 
   get classString() {
     const list = [
-      'Checkbox relative',
+      "Checkbox relative",
       this.props.align,
       this.color,
       this.cursor,
@@ -127,8 +134,8 @@ class CheckBox extends React.Component<Props, State> {
       this.props.radius,
       this.props.size,
       this.props.transition,
-    ]
-    return classnames(list)
+    ];
+    return classnames(list);
   }
 
   render() {
@@ -138,13 +145,28 @@ class CheckBox extends React.Component<Props, State> {
       this.focusColor,
       this.iconClass,
       this.props.transition,
-    ]
-    const iconClassString = classnames(iconClassList)
-    const checkboxIcon = this.checkboxIcon ?
-      <Icon className={iconClassString} icon={this.checkboxIcon} size={this.props.iconSize} /> : null;
+    ];
+    const iconClassString = classnames(iconClassList);
+    const checkboxIcon = this.checkboxIcon ? (
+      <Icon
+        className={iconClassString}
+        icon={this.checkboxIcon}
+        size={this.props.iconSize}
+      />
+    ) : null;
 
-    const text = this.props.text ?
-      <span className={classnames(["Checkbox__text leading-normal", this.props.iconText, this.props.truncate, { 'ml-2': this.checkboxIcon }])}>{this.props.text}</span> : null
+    const text = this.props.text ? (
+      <span
+        className={classnames([
+          "Checkbox__text leading-normal",
+          this.props.iconText,
+          this.props.truncate,
+          { "ml-2": this.checkboxIcon },
+        ])}
+      >
+        {this.props.text}
+      </span>
+    ) : null;
 
     return (
       <label
@@ -171,7 +193,7 @@ class CheckBox extends React.Component<Props, State> {
         {checkboxIcon}
         {text}
       </label>
-    )
+    );
   }
 
   onClick(e: React.ChangeEvent) {
@@ -179,17 +201,17 @@ class CheckBox extends React.Component<Props, State> {
 
     if (this.props.disabled) return;
 
-    if (this.props.onChange && typeof this.props.onChange === 'function') {
+    if (this.props.onChange && typeof this.props.onChange === "function") {
       this.props.onChange(value, !checked);
     }
     this.setState({
-      checked: !checked
-    })
+      checked: !checked,
+    });
   }
   onFocus = (e: React.FocusEvent) => {
-    this.setState({ focused: true })
+    this.setState({ focused: true });
     this.input.current?.focus();
-  }
+  };
 }
 
-export default CheckBox
+export default CheckBox;
