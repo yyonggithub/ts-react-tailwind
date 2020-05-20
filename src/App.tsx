@@ -14,6 +14,7 @@ import SwitchModule from './modules/switch';
 import ProgressBarModule from './modules/progress-bar';
 import ProgressCircleModule from './modules/progress-circle';
 import AlertModule from './modules/alert';
+// import AvatarModule from './modules/avatar';
 
 const Home: React.SFC = () => {
   return (<div>Home</div>)
@@ -37,6 +38,7 @@ const App: React.SFC = () => (
         <li><Link to="/ProgressBarModule">ProgressBarModule</Link></li>
         <li><Link to="/ProgressCircleModule">ProgressCircleModule</Link></li>
         <li><Link to="/AlertModule">AlertModule</Link></li>
+        <li><Link to="/AvatarModule">AvatarModule</Link></li>
       </ul>
 
       <hr />
@@ -55,6 +57,7 @@ const App: React.SFC = () => (
       <Route path="/ProgressBarModule" component={ProgressBarModule} />
       <Route path="/ProgressCircleModule" component={ProgressCircleModule} />
       <Route path="/AlertModule" component={AlertModule} />
+      {/* <Route path="/AvatarModule" component={AvatarModule} /> */}
     </div>
   </Router>
 )

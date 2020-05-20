@@ -1,6 +1,6 @@
-import React from 'react'
-import DocGroup from '../../components/doc-group'
-import Loading from '../../components/loading'
+import React from "react";
+import DocGroup from "../../components/doc-group";
+import Loading from "../../components/loading";
 
 const CircleModule: React.SFC = () => {
   return (
@@ -13,13 +13,13 @@ const CircleModule: React.SFC = () => {
       </DocGroup>
       <DocGroup name="color">
         <Loading.Circle color="text-primary" />
-        <Loading.Circle color="text-info"/>
+        <Loading.Circle color="text-info" />
       </DocGroup>
       <DocGroup name="Duration">
         <Loading.Circle duration=".2s" />
       </DocGroup>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default CircleModule
+export default CircleModule;

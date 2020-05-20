@@ -1,29 +1,29 @@
-import React from 'react'
-import classnames from 'classnames';
+import React from "react";
+import classnames from "classnames";
 
 export type LoaderBarProps = {
   start?: boolean;
   end?: boolean;
-  children?: React.ReactNode,
-} & Partial<typeof defaultProps>
+  children?: React.ReactNode;
+} & Partial<typeof defaultProps>;
 
 const defaultProps = {
-  background: 'bg-gray-1',
-  color: 'bg-primary',
-  size: 'h-2px',
-  radius: 'rounded-full',
-  startDuration: '5s',
-  endDuration: '.5s',
-  fadeDuration: '.2s',
-  delay: '1.25s',
-}
+  background: "bg-gray-1",
+  color: "bg-primary",
+  size: "h-2px",
+  radius: "rounded-full",
+  startDuration: "5s",
+  endDuration: ".5s",
+  fadeDuration: ".2s",
+  delay: "1.25s",
+};
 
 class LoaderBar extends React.PureComponent<LoaderBarProps, {}> {
-  static defaultProps = defaultProps
+  static defaultProps = defaultProps;
 
   get progress() {
-    if (this.props.start && !this.props.end) return '85%';
-    if (this.props.end) return '100%';
+    if (this.props.start && !this.props.end) return "85%";
+    if (this.props.end) return "100%";
     return 0;
   }
 
@@ -36,18 +36,18 @@ class LoaderBar extends React.PureComponent<LoaderBarProps, {}> {
       this.props.background,
       this.props.radius,
       this.props.size,
-      { 'opacity-0': this.props.end }
-    ]
-    return classnames(list)
+      { "opacity-0": this.props.end },
+    ];
+    return classnames(list);
   }
   get otherClassString() {
     const list = [
       "Loader__bar absolute inset-0",
       this.props.color,
       this.props.radius,
-      this.props.end
-    ]
-    return classnames(list)
+      this.props.end,
+    ];
+    return classnames(list);
   }
 
   render() {
@@ -66,16 +66,14 @@ class LoaderBar extends React.PureComponent<LoaderBarProps, {}> {
             className={this.otherClassString}
             style={{
               width: this.progress,
-              transition: `width ${this.durationStart} cubic-bezier(0.16, 1, 0.3, 1)`
+              transition: `width ${this.durationStart} cubic-bezier(0.16, 1, 0.3, 1)`,
               // transition:width 5s cubic-bezier(0.16, 1, 0.3, 1);
             }}
-          >
-
-          </div>
-        </div >
-      </React.Fragment >
-    )
+          ></div>
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
-export default LoaderBar
+export default LoaderBar;

@@ -1,7 +1,7 @@
-import React from 'react';
-import Button from '../../components/button'
-import Icon from '../../components/icon';
-import DocGroup from '../../components/doc-group'
+import React from "react";
+import Button from "../../components/button";
+import Icon from "../../components/icon";
+import DocGroup from "../../components/doc-group";
 
 class ButtonModule extends React.Component {
   render() {
@@ -15,10 +15,10 @@ class ButtonModule extends React.Component {
           <Button text="Text" preset="text" />
         </DocGroup>
         <DocGroup name="size">
-          <Button text="Small" size={'h-6'} />
+          <Button text="Small" size={"h-6"} />
           <Button text="Medium" />
-          <Button text="Large" size={'h-10'} />
-          <Button text="X Large" size={'h-12'} />
+          <Button text="Large" size={"h-10"} />
+          <Button text="X Large" size={"h-12"} />
         </DocGroup>
         <DocGroup name="icon&button">
           <Button text="Default" icon="drop-15" />
@@ -26,7 +26,7 @@ class ButtonModule extends React.Component {
           <Button text="Primary" icon="app-store" preset="primary" />
           <Button text="Danger" icon="c-warning" preset="danger" />
           <Button text="Text" icon="edit-levels" preset="text" />
-          <Button preset="primary" >
+          <Button preset="primary">
             <span>Block</span>
             <Icon className="ml-2 -mr-1" icon="c-question" />
           </Button>
@@ -85,12 +85,18 @@ class ButtonModule extends React.Component {
           <Button
             text="Custom shadow"
             color="border text-primary-dark bg-body hover:text-primary shadow"
-            focusColor={["shadow-outline border-primary-opacity-4", "border-transparent"]}
+            focusColor={[
+              "shadow-outline border-primary-opacity-4",
+              "border-transparent",
+            ]}
           />
           <Button
             text="Custom purple color"
             color="border text-white bg-info hover:bg-info-bright active:bg-info-dark"
-            focusColor={["shadow-outline-info border-info-dark", "border-transparent"]}
+            focusColor={[
+              "shadow-outline-info border-info-dark",
+              "border-transparent",
+            ]}
           />
           <Button
             text="Custom dark color"
@@ -108,9 +114,8 @@ class ButtonModule extends React.Component {
           </Button>
         </DocGroup>
       </React.Fragment>
-    )
+    );
   }
 }
 
 export default ButtonModule;
-

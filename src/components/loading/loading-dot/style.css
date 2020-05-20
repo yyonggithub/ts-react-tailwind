@@ -22,7 +22,6 @@
   animation: dot-loader-right var(--dot-duration) infinite alternate ease;
 }
 
-
 @keyframes dot-loader-left {
   0% {
     transform: translate3d(0, 0, 0) scale(1);

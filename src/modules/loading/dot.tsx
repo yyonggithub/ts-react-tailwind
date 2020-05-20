@@ -1,7 +1,6 @@
-import React from 'react'
-import DocGroup from '../../components/doc-group'
-import Loading from '../../components/loading'
-
+import React from "react";
+import DocGroup from "../../components/doc-group";
+import Loading from "../../components/loading";
 
 const DotModule: React.SFC = () => {
   return (
@@ -20,7 +19,7 @@ const DotModule: React.SFC = () => {
         <Loading.Dot duration=".2s" />
       </DocGroup>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default DotModule
+export default DotModule;

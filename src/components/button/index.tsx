@@ -1,7 +1,7 @@
 import * as React from "react";
 import classnames from "classnames";
 import Icon from "../icon";
-import LoaderDot from "../loading/dot";
+import LoaderDot from "../loading/loading-dot";
 import { classnamesType } from "../../interface";
 
 export type presetType =
