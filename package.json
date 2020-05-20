@@ -23,7 +23,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/styles/tailwind.css -o src/styles/tailwind.bundle.css",
-    "watch:css": "postcss src/styles/tailwind.css -o src/styles/tailwind.bundle.css -w"
+    "start:lib":"styleguidist server",
+    "build:lib":"styleguidist build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,6 +50,7 @@
     "postcss-preset-env": "^6.7.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-styleguidist": "^11.0.6",
     "react-svg": "^11.0.21",
     "tailwindcss": "^1.4.6"
   }
