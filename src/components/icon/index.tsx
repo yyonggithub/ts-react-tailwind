@@ -1,35 +1,35 @@
-import * as React from 'react'
-import { ReactSVG } from 'react-svg'
-import classnames from 'classnames';
-import { ClassType } from '../../interface';
+import * as React from "react";
+import { ReactSVG } from "react-svg";
+import classnames from "classnames";
+import { classnamesType } from "../../interface";
 
 type Props = {
   icon: string;
-  className?: ClassType
-  style?: any
-} & Partial<typeof defaultProps>
+  className?: classnamesType;
+  style?: any;
+} & Partial<typeof defaultProps>;
 
 const defaultProps = {
   size: "16px",
-  transition: 'transition ease-in-out duration-200',
-}
+  transition: "transition ease-in-out duration-200",
+};
 
-class Icon extends React.Component<Props & typeof defaultProps, {}> {
-  static defaultProps = defaultProps
+class Icon extends React.PureComponent<Props, {}> {
+  static defaultProps = defaultProps;
 
   get classStr() {
     const list = [
-      'Icon pointer-events-none flex-shrink-0',
+      "Icon pointer-events-none flex-shrink-0",
       this.props.transition,
-      this.props.className
-    ]
-    return classnames(list)
+      this.props.className,
+    ];
+    return classnames(list);
   }
   render() {
     const style = {
       width: this.props.size,
       height: this.props.size,
-    }
+    };
     return (
       <div
         aria-live="polite"
@@ -40,11 +40,11 @@ class Icon extends React.Component<Props & typeof defaultProps, {}> {
         <ReactSVG
           style={style}
           src={`assets/svg/${this.props.icon}.svg`}
-          className={'fill-current'}
+          className={"fill-current"}
         />
       </div>
-    )
+    );
   }
 }
 
-export default Icon
+export default Icon;

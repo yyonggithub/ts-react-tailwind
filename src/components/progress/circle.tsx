@@ -1,20 +1,20 @@
 import React, { SFC, useState, useEffect } from "react";
-import classnames from 'classnames';
-import { ClassType } from "../../interface";
+import classnames from "classnames";
+import { classnamesType } from "../../interface";
 
 type CircleProps = {
   text?: boolean;
   progress?: number;
-} & Partial<typeof defaultProps>
+} & Partial<typeof defaultProps>;
 
 const defaultProps = {
-  color: 'text-primary',
+  color: "text-primary",
   size: 64,
   strokeWidth: 4,
-  background: 'text-gray-1',
-  font: 'text-base font-bold',
-  position: 'relative',
-}
+  background: "text-gray-1",
+  font: "text-base font-bold",
+  position: "relative",
+};
 
 type SubCircleProps = {
   center?: number;
@@ -24,11 +24,19 @@ type SubCircleProps = {
   dashOffset?: number;
   transform?: string;
   style?: React.CSSProperties;
-  className?: ClassType;
-}
+  className?: classnamesType;
+};
 
 const SubCircle: SFC<SubCircleProps> = (props) => {
-  const { center, radius, circumference, strokeWidth, transform, style, className } = props
+  const {
+    center,
+    radius,
+    circumference,
+    strokeWidth,
+    transform,
+    style,
+    className,
+  } = props;
   return (
     <circle
       className={classnames("stroke-current", className)}
@@ -41,19 +49,19 @@ const SubCircle: SFC<SubCircleProps> = (props) => {
       style={style}
       transform={transform}
     ></circle>
-  )
-}
+  );
+};
 
 const Circle: SFC<CircleProps> = (props) => {
-  const [id, setId] = useState('')
+  const [id, setId] = useState("");
   useEffect(() => {
-    const str = (Math.random() * Math.random())
-    setId(`id_${str}`)
-  }, [])
+    const str = Math.random() * Math.random();
+    setId(`id_${str}`);
+  }, []);
 
   const { size, strokeWidth, color, position, font, text, background } = props;
   const progress = props.progress || 0;
-  const viewBox = `0 0 ${size} ${size}`
+  const viewBox = `0 0 ${size} ${size}`;
   const center = (size as number) / 2;
   const diameter = (size as number) - (strokeWidth as number) - 1;
   const radius = diameter / 2;
@@ -61,8 +69,8 @@ const Circle: SFC<CircleProps> = (props) => {
   const dashOffset = (() => {
     const tmpProgress = Math.max(0, Math.min(progress, 100));
     return ((100 - tmpProgress) / 100) * circumference;
-  })()
-  const transform = `rotate(-90, ${center}, ${center})`
+  })();
+  const transform = `rotate(-90, ${center}, ${center})`;
 
   const subCircleOtherProps = {
     center,
@@ -71,7 +79,7 @@ const Circle: SFC<CircleProps> = (props) => {
     strokeWidth,
     dashOffset,
     transform,
-  }
+  };
   return (
     <div
       aria-valuenow={progress}
@@ -103,30 +111,33 @@ const Circle: SFC<CircleProps> = (props) => {
               textAnchor="middle"
               x="32"
               y="32"
-            >{progress}%</text>
+            >
+              {progress}%
+            </text>
           </pattern>
         </defs>
-        {
-          text ?
-            <rect
-              width="100%"
-              height="100%"
-              x="0"
-              y="0"
-              fill={`url(#${id})`}
-            ></rect> : null
-        }
+        {text ? (
+          <rect
+            width="100%"
+            height="100%"
+            x="0"
+            y="0"
+            fill={`url(#${id})`}
+          ></rect>
+        ) : null}
         <SubCircle {...subCircleOtherProps} className={background as string} />
-        <SubCircle {...subCircleOtherProps} style={{
-          strokeDashoffset: dashOffset,
-          transition: "stroke-dashoffset 0.2s linear"
-        }} />
+        <SubCircle
+          {...subCircleOtherProps}
+          style={{
+            strokeDashoffset: dashOffset,
+            transition: "stroke-dashoffset 0.2s linear",
+          }}
+        />
       </svg>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-Circle.defaultProps = defaultProps
+Circle.defaultProps = defaultProps;
 
-
-export default Circle
+export default Circle;
