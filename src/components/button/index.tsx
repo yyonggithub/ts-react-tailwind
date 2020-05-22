@@ -35,6 +35,12 @@ export type Props = {
   onBlur?: Function;
   onMousedown?: Function;
   onMouseup?: Function;
+  onMouseOver?: ()=>void;
+  onMouseLeave?: ()=>void;
+  /**
+   * 用于从父类中引入ref
+   */
+  target?: any;
 } & Partial<typeof defaultProps>;
 
 interface State {
@@ -56,24 +62,26 @@ const defaultProps = {
 };
 
 class Button extends React.Component<Props, State> {
-
-  static Group = ButtonGroup
+  static Group = ButtonGroup;
 
   static defaultProps = defaultProps;
 
-  input: React.RefObject<HTMLButtonElement>;
+  input: React.RefObject<HTMLButtonElement> | undefined;
 
   constructor(props: Readonly<Props>) {
     super(props);
     this.state = {
       focused: false,
     };
-    this.input = React.createRef();
+    this.input = this.props.target || React.createRef();
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onMousedown = this.onMousedown.bind(this);
     this.onMouseup = this.onMouseup.bind(this);
+  }
+  componentDidMount() {
+    this.input = this.props.target || React.createRef();
   }
 
   get ariaLabel() {
@@ -271,7 +279,9 @@ class Button extends React.Component<Props, State> {
         onClick={this.onClick}
         onMouseDown={this.onMousedown}
         onMouseUp={this.onMouseup}
-        ref={this.input}
+        onMouseLeave={this.props.onMouseLeave}
+        onMouseOver={this.props.onMouseOver}
+        ref={this.input || this.props.target}
       >
         {loading}
         {icon}
@@ -282,16 +292,16 @@ class Button extends React.Component<Props, State> {
     );
   }
 
-  onFocus(e: React.FocusEvent) {
+  onFocus(e: React.FocusEvent<HTMLButtonElement>) {
     this.setState({ focused: true });
-    this.input.current?.focus();
+    e.target.focus();
   }
-  onBlur() {
+  onBlur(e: React.FocusEvent<HTMLButtonElement>) {
     if (!this.props.disabled && typeof this.props.onBlur === "function") {
-      this.props.onBlur();
+      e.target.blur();
     }
     this.setState({ focused: false });
-    this.input.current?.blur();
+    e.target.blur();
   }
   onClick(e: React.MouseEvent) {
     if (!this.props.disabled && typeof this.props.onClick === "function") {
