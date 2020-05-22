@@ -1,0 +1,49 @@
+._tooltip {
+  position: absolute;
+  padding: 0 5px;
+  &.left,
+  &.right {
+    padding: 0 5px;
+  }
+  &.top,
+  &.bottom {
+    padding: 5px 0;
+  }
+}
+
+._body {
+  padding: 3px 8px;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  background-color: #000;
+  opacity: 0.75;
+}
+
+._arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  // opacity: 0.75;
+  &.left {
+    right: 0;
+    border-width: 5px 0 5px 5px;
+    border-color: transparent transparent transparent #000;
+  }
+  &.right {
+    left: 0;
+    border-width: 5px 5px 5px 0;
+    border-color: transparent #232323 transparent transparent;
+  }
+  &.top {
+    bottom: 0;
+    border-width: 5px 5px 0;
+    border-color: #232323 transparent transparent transparent;
+  }
+  &.bottom {
+    top: 0;
+    border-width: 0 5px 5px;
+    border-color: transparent transparent #232323 transparent;
+  }
+}
