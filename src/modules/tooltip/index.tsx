@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment, useState, useRef, Ref } from "react";
 import DocGroup from "../../components/doc-group";
 import Button from "../../components/button";
 import Overlay from "../../components/tooltip/overlay";
@@ -16,7 +16,7 @@ const TooltipSide = (props: {
 }) => {
   const placement = props.placement || "top";
   const [show, setShow] = useState(false);
-  const triggerRef = useRef(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   function onMouseLeave() {
     setShow(false);
   }
@@ -38,7 +38,7 @@ const TooltipSide = (props: {
   return (
     <div>
       <Button
-        target={triggerRef}
+        ref={triggerRef}
         onMouseLeave={props.isClick ? undefined : onMouseLeave}
         onMouseOver={props.isClick ? undefined : onMouseOver}
         onClick={props.isClick ? onClick : undefined}
@@ -69,7 +69,7 @@ const TooltipModule = () => {
     <Fragment>
       <DocGroup name="default">
         <div>
-          <Button onClick={onClick} target={triggerRef}>
+          <Button onClick={onClick} ref={triggerRef}>
             按钮
           </Button>
           <Overlay show={show} placement={placement} target={triggerRef}>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import Button from '..';
-import { presetType } from '..'
+import { presetType } from '../button'
 
 export type Option = {
   text: string;
@@ -49,20 +49,7 @@ type State = {
   }[]
 }
 
-// function hasSelected(props: { options: Option[] }) {
-//   if (props.options && props.options.length > 0) {
-//     const index = props.options.findIndex(item => {
-//       const { selected } = item;
-//       return typeof selected !== 'undefined' && typeof selected === 'boolean';
-//     })
-//     if (index > -1) {
-//       return true;
-//     }
-//   }
-//   return false;
-// }
-
-class ButtonGroup extends React.Component<ButtonGroupProps, State> {
+class ButtonGroup<T extends ButtonGroupProps> extends React.Component<ButtonGroupProps, State> {
 
   static defaultProps = defaultProps;
 

@@ -26,8 +26,7 @@ class Avatar extends PureComponent<AvatarProps, {}> {
   state = {
     id: "id_" + Math.random() * Math.random(),
   };
-  static group: typeof import("/Users/leo/workspace/other-projects/ts-react-tailwind/src/components/avatar/avatar-group/index").default;
-
+  
   get character() {
     return this.props.ariaLabel ? this.props.ariaLabel[0] : "";
   }

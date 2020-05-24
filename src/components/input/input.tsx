@@ -1,9 +1,9 @@
 import React, { createRef } from 'react';
 import classnames from 'classnames';
-import { ClassType } from '../../interface';
+import { classnamesType } from '../../interface';
 
 type InputProps = {
-  className?: ClassType
+  className?: classnamesType
   value?: string;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;

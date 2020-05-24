@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Option } from "../../components/button/button-group";
+import ButtonGroup, { Option } from "../../components/button/button-group";
 import DocGroup from "../../components/doc-group";
 import Button from "../../components/button";
 
@@ -55,84 +55,81 @@ const ButtonGroupModule: React.SFC = () => {
   return (
     <React.Fragment>
       <DocGroup name="default">
-        <Button.Group options={def.options} />
+        <ButtonGroup options={def.options} />
       </DocGroup>
       <DocGroup name="size">
-        <Button.Group options={def.options} size="h-6" />
-        <Button.Group options={def.options} size="h-10" />
+        <ButtonGroup options={def.options} size="h-6" />
+        <ButtonGroup options={def.options} size="h-10" />
       </DocGroup>
       <DocGroup name="preset">
-        <Button.Group options={def.options} preset="primary" />
-        <Button.Group options={def.options} preset="secondary" />
+        <ButtonGroup options={def.options} preset="primary" />
+        <ButtonGroup options={def.options} preset="secondary" />
       </DocGroup>
       <DocGroup name="combination & radius">
-        <Button.Group
+        <ButtonGroup
           radius="first:rounded-l-full"
           options={def.options}
-        ></Button.Group>
-        <Button.Group
+        ></ButtonGroup>
+        <ButtonGroup
           radius="last:rounded-r-full"
           options={def.options}
-        ></Button.Group>
+        ></ButtonGroup>
       </DocGroup>
       <DocGroup name="direction">
-        <Button.Group
-          orientation="vertical"
-          options={def.options}
-        ></Button.Group>
-        <Button.Group
+        <ButtonGroup orientation="vertical" options={def.options}></ButtonGroup>
+        <ButtonGroup
           preset="primary"
           orientation="vertical"
           options={def.options}
-        ></Button.Group>
-        <Button.Group
+        ></ButtonGroup>
+        <ButtonGroup
           preset="secondary"
           orientation="vertical"
           options={def.options}
-        ></Button.Group>
+        ></ButtonGroup>
       </DocGroup>
       <DocGroup name="selector">
-        <Button.Group selector={true} options={def.options}></Button.Group>
-        <Button.Group
+        <ButtonGroup selector={true} options={def.options}></ButtonGroup>
+        <ButtonGroup
           selector={true}
           preset={"primary"}
           options={def.options}
-        ></Button.Group>
-        <Button.Group
+        ></ButtonGroup>
+        <ButtonGroup
           selector={true}
           preset={"secondary"}
           options={def.options}
-        ></Button.Group>
+        ></ButtonGroup>
       </DocGroup>
       <DocGroup name="toggleable">
-        <Button.Group
+        <ButtonGroup
           multiple={true}
           selector={true}
           toggleable={true}
           options={def.options}
-        ></Button.Group>
+        ></ButtonGroup>
       </DocGroup>
       <DocGroup name="disabled">
-        <Button.Group disabled={true} options={def.options}></Button.Group>
-        <Button.Group
+        <ButtonGroup disabled={true} options={def.options}></ButtonGroup>
+        <ButtonGroup
           disabled={true}
           disabledColor="border border-gray-8 text-gray-3 bg-gray-7"
           options={def.options}
-        ></Button.Group>
+        ></ButtonGroup>
       </DocGroup>
       <DocGroup name="disabled">
-        <Button.Group
+        <ButtonGroup
           // disabled={true}
           options={disabled.options}
           selector={true}
-        ></Button.Group>
+        ></ButtonGroup>
       </DocGroup>
       <DocGroup name="comb">
-        <Button.Group
+        <ButtonGroup
           // disabled={true}
           options={comb.options}
           selector={true}
-        ></Button.Group>
+        ></ButtonGroup>
       </DocGroup>
     </React.Fragment>
   );
