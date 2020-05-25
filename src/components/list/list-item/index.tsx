@@ -50,6 +50,7 @@ const ListItem: FC<ListItemProps> = (props) => {
     handleMouseEnter,
     handleMouseLeave,
   } = focusedState;
+
   const {
     index: _index,
     children,
@@ -157,7 +158,7 @@ const ListItem: FC<ListItemProps> = (props) => {
     </span>
   ) : null;
 
-  const handleCLick: MouseEventHandler<HTMLLIElement | HTMLAnchorElement> = (
+  const handleClick: MouseEventHandler<HTMLLIElement | HTMLAnchorElement> = (
     e
   ) => {
     if (_disabled) return;
@@ -181,7 +182,7 @@ const ListItem: FC<ListItemProps> = (props) => {
         // role={"link"}
         tabIndex={tabindex}
         {...restProps}
-        onClick={handleCLick}
+        onClick={handleClick}
         onBlur={handleBlur}
         onFocus={handleFocus}
         onMouseLeave={handleMouseLeave}
@@ -203,7 +204,7 @@ const ListItem: FC<ListItemProps> = (props) => {
         role={"link"}
         tabIndex={tabindex}
         {...restProps}
-        onClick={handleCLick}
+        onClick={handleClick}
         onBlur={handleBlur}
         onFocus={handleFocus}
         onMouseLeave={handleMouseLeave}
