@@ -1,8 +1,4 @@
-import React, {
-  ButtonHTMLAttributes,
-  useMemo,
-  forwardRef,
-} from "react";
+import React, { ButtonHTMLAttributes, useMemo, forwardRef } from "react";
 import classnames from "classnames";
 import Icon from "../icon";
 import { classnamesType } from "../../interface";
@@ -106,7 +102,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       return "cursor-default";
     }
     return "cursor-pointer";
-  }, [_loading, _selected, _display]);
+  }, [_loading, _selected, _disabled]);
 
   const padding = useMemo(() => {
     if (typeof _padding === "boolean" && _padding === false) {
@@ -180,7 +176,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       default:
         return `border ${focusState} text-body bg-body hover:text-body-bright active:text-body-dark active:bg-gray-1`;
     }
-  }, [_preset, _disabled, _color, focusState]);
+  }, [_preset, _disabled, _color, focusState, _disabledColor]);
 
   const iconMargin = useMemo(() => {
     if (_iconMargin) return _iconMargin;

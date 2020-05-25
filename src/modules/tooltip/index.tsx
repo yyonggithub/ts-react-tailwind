@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef, Ref } from "react";
+import React, { Fragment, useState, useRef } from "react";
 import DocGroup from "../../components/doc-group";
 import Button from "../../components/button";
 import Overlay from "../../components/tooltip/overlay";

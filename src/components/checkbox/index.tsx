@@ -4,6 +4,7 @@ import Icon from "../icon";
 import CheckBoxGroup from "./checkbox-group";
 
 export type BaseProps = {
+  className?: string;
   text?: string;
   name?: string;
   ariaLabel?: string;
@@ -125,6 +126,7 @@ class CheckBox extends React.Component<Props, State> {
   get classString() {
     const list = [
       "Checkbox relative",
+      this.props.className,
       this.props.align,
       this.color,
       this.cursor,

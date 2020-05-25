@@ -1,7 +1,6 @@
 import * as React from "react";
 import ButtonGroup, { Option } from "../../components/button/button-group";
 import DocGroup from "../../components/doc-group";
-import Button from "../../components/button";
 
 const def = {
   options: [
