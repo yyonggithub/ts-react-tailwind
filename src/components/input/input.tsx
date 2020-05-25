@@ -1,10 +1,11 @@
-import React, { createRef } from 'react';
+import React, { createRef, RefObject } from 'react';
 import classnames from 'classnames';
 import { classnamesType } from '../../interface';
 
 type InputProps = {
   className?: classnamesType
   value?: string;
+  ref?: any
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
@@ -110,6 +111,7 @@ class Input extends React.PureComponent<InputProps, State> {
         onKeyUp={this.onKeyUp}
         onKeyDown={this.onKeyDown}
         onChange={this.onChange}
+        ref={this.props.ref || this.input}
         {...rest}
       />
     )

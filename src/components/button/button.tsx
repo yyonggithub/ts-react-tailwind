@@ -2,13 +2,10 @@ import React, {
   ButtonHTMLAttributes,
   useMemo,
   forwardRef,
-  ForwardRefExoticComponent,
-  RefAttributes,
 } from "react";
 import classnames from "classnames";
 import Icon from "../icon";
 import { classnamesType } from "../../interface";
-import ButtonGroup from "./button-group";
 import useFocused from "../../hooks/useFocused";
 import Loading from "../loading";
 
@@ -100,7 +97,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   } = props;
   const ariaLabel = _ariaLabel || _text || undefined;
   const zIndex = focused ? (_zIndex ? _zIndex : "z-2") : undefined;
-  
+
   const cursor = useMemo(() => {
     if (_loading) {
       return "cursor-wait";
