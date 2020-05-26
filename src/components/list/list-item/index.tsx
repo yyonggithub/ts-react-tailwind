@@ -21,7 +21,7 @@ type ListItemProps = {
   iconClass?: string;
   icon?: string;
   textClass?: string;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: React.MouseEvent<HTMLLIElement | HTMLAnchorElement>) => void;
 } & Partial<typeof defaultProps>;
 
 const defaultProps = {

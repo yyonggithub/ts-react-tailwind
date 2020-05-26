@@ -6,6 +6,7 @@ export type LoaderDotProps = {
   outColor?: string;
   size?: string;
   duration?: string;
+  className?: string;
 } & Partial<typeof defaultProps>;
 
 const defaultProps = {
@@ -33,9 +34,11 @@ class LoaderDot extends React.Component<
   }
 
   get classStr() {
+    const { className } = this.props;
     const list = [
       "Loader--dot items-center flex flex-shrink-0 justify-center text-center",
       this.props.color,
+      className,
     ];
     return classnames(list);
   }

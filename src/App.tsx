@@ -5,7 +5,7 @@ import ButtonModule from './modules/button'
 import ButtonGroupModule from './modules/button-group';
 import CheckBoxModule from './modules/checkbox';
 import RadioModule from './modules/radio';
-// import InputModule from './modules/input';
+import InputModule from './modules/input';
 import LoadingDotModule from './modules/loading/dot';
 import LoadingBarModule from './modules/loading/bar';
 import LoadingCircleModule from './modules/loading/circle'
@@ -52,7 +52,7 @@ const App: React.SFC = () => (
       <Route path="/ButtonGroupModule" component={ButtonGroupModule} />
       <Route path="/CheckBoxModule" component={CheckBoxModule} />
       <Route path="/RadioModule" component={RadioModule} />
-      {/* <Route path="/InputModule" component={InputModule} /> */}
+      <Route path="/InputModule" component={InputModule} />
       <Route path="/LoadingDotModule" component={LoadingDotModule} />
       <Route path="/LoadingBarModule" component={LoadingBarModule} />
       <Route path="/LoadingCircleModule" component={LoadingCircleModule} />
