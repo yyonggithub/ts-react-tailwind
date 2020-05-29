@@ -1,15 +1,15 @@
-import React, { Component, createRef, FC } from "react";
-import Input from "./input";
-import classnames from "classnames";
-import Icon from "../icon";
+import React, { FC, ChangeEventHandler, ReactNode } from "react";
 import { classnamesType } from "../../interface";
-import Adorn, { AdornProps } from "./sub/adorn";
-import Message from "./sub/message";
+import { AdornProps } from "./sub/adorn";
+import useFocused from "../../hooks/useFocused";
+import PickInput from "./pick-input";
+import handleProps from "./handleProps";
 
-type TextFieldProps = {
+export type TextFieldProps = {
   className?: classnamesType;
   labelClass?: classnamesType;
   insetClass?: classnamesType;
+  value?: string;
   text?: string;
   placeholder?: string;
   ariaLabel?: string;
@@ -28,8 +28,25 @@ type TextFieldProps = {
   suffix?: string;
   suffixClass?: classnamesType;
   error?: boolean;
+  labelDisplay?: string;
+  labelMargin?: string;
+  autoComplete?: string;
+  required?: boolean;
+  type?: string;
+  defaultValue?: string;
+  align?: string;
+  font?: string;
+  lineHeight?: string;
+  outline?: string;
+  padding?: string;
+  placeholderColor?: string;
+  radius?: string;
+  size?: string;
+  transition?: string;
+  children?: ReactNode;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 } & Partial<typeof defaultProps> &
-  Partial<AdornProps>;
+  AdornProps;
 
 const defaultProps = {
   align: "text-left",
@@ -45,10 +62,25 @@ const defaultProps = {
   transition: "transition ease-in-out duration-200",
 };
 
-// TODO: 未完成
 const TextField: FC<TextFieldProps> = (props) => {
+  const {
+    focused,
+    handleBlur,
+    handleFocus,
+    // handleMouseEnter,
+    // handleMouseLeave,
+  } = useFocused(props as any, false);
 
-  return <></>;
+  const pickProps = handleProps(props, focused);
+
+  return (
+    <PickInput
+      {...pickProps}
+      handleBlur={handleBlur}
+      handleFocus={handleFocus}
+      focused={focused}
+    />
+  );
 };
 
 TextField.defaultProps = defaultProps;

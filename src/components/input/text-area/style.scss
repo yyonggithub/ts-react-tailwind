@@ -1,0 +1,11 @@
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--primary) !important;
+  transition: "color 99999s ease-out, background-color 99999s ease-out";
+  transition-delay: 99999s;
+}
+
+.TextArea__base{
+  >.Icon{
+    margin-top:0.5rem;
+  }
+}

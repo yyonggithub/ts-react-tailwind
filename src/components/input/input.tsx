@@ -1,20 +1,22 @@
-import React, {
-  forwardRef,
-  InputHTMLAttributes,
-  ChangeEventHandler,
-} from "react";
+import React, { forwardRef } from "react";
 import classnames from "classnames";
+import { classnamesType } from "../../interface";
 import useFocused from "../../hooks/useFocused";
 
-export interface InputProps
-  extends InputHTMLAttributes<HTMLElement>,
-    Partial<typeof defaultProps> {
-  className?: string;
-  message?: string;
-  preSelected?: boolean;
-  type?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-}
+export type InputProps = {
+  className?: classnamesType;
+  value?: string;
+  defaultValue?: string;
+  ref?: any;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onMouseDown?: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onMouseUp?: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 const defaultProps = {};
 

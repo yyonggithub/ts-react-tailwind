@@ -17,6 +17,8 @@ import AlertModule from './modules/alert';
 import AvatarModule from './modules/avatar';
 import TooltipModule from './modules/tooltip';
 import ListModule from './modules/list';
+import TextFieldModule from './modules/input/text-field';
+import TextAreaModule from './modules/input/text-area';
 
 const Home: React.SFC = () => {
   return (<div>Home</div>)
@@ -32,6 +34,8 @@ const App: React.SFC = () => (
         <li><Link to="/CheckBoxModule">CheckBoxModule</Link></li>
         <li><Link to="/RadioModule">RadioModule</Link></li>
         <li><Link to="/InputModule">InputModule</Link></li>
+        <li><Link to="/TextFieldModule">TextFieldModule</Link></li>
+        <li><Link to="/TextAreaModule">TextAreaModule</Link></li>
         <li><Link to="/LoadingDotModule">LoadingDotModule</Link></li>
         <li><Link to="/LoadingBarModule">LoadingBarModule</Link></li>
         <li><Link to="/LoadingCircleModule">LoadingCircleModule</Link></li>
@@ -53,6 +57,8 @@ const App: React.SFC = () => (
       <Route path="/CheckBoxModule" component={CheckBoxModule} />
       <Route path="/RadioModule" component={RadioModule} />
       <Route path="/InputModule" component={InputModule} />
+      <Route path="/TextFieldModule" component={TextFieldModule} />
+      <Route path="/TextAreaModule" component={TextAreaModule} />
       <Route path="/LoadingDotModule" component={LoadingDotModule} />
       <Route path="/LoadingBarModule" component={LoadingBarModule} />
       <Route path="/LoadingCircleModule" component={LoadingCircleModule} />

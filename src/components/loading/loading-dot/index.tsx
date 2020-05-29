@@ -1,12 +1,13 @@
 import * as React from "react";
 import classnames from "classnames";
 import "./style.css";
+import { classnamesType } from "../../../interface";
 
 export type LoaderDotProps = {
   outColor?: string;
   size?: string;
   duration?: string;
-  className?: string;
+  className?: classnamesType;
 } & Partial<typeof defaultProps>;
 
 const defaultProps = {
