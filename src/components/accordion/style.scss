@@ -1,0 +1,48 @@
+.Accordion {
+  // display:
+  position: relative;
+  // width: 30vw;
+  // min-width: 10vw;
+}
+
+.Accordion__panel {
+  animation: myEnter 200ms;
+}
+
+.accordion-show-enter {
+  opacity: 0.01;
+  transform-origin: top;
+  transform: scale(1, 0.1);
+  // animation: myEnter 200ms;
+}
+.accordion-show-enter-active {
+  opacity: 1;
+  transform-origin: top;
+  // animation: myEnter 200ms;
+
+  transform: scale(1) translateY(0%);
+  transition: all 200ms ease-in-out;
+}
+.accordion-show-exit {
+  opacity: 1;
+  transform-origin: top;
+
+  transform: scale(1) translateY(0%);
+}
+.accordion-show-exit-active {
+  opacity: 0.01;
+  transform-origin: top;
+
+  transform: scale(1, 0.1);
+  transition: all 200ms ease-in-out;
+}
+
+@keyframes myEnter {
+  0% {
+    height: 0px;
+  }
+
+  100% {
+    height: auto;
+  }
+}

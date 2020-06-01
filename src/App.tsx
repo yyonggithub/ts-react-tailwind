@@ -20,6 +20,7 @@ import ListModule from './modules/list';
 import TextFieldModule from './modules/input/text-field';
 import TextAreaModule from './modules/input/text-area';
 import ModalModule from './modules/modal';
+import AccordionModule from './modules/accordion';
 
 const Home: React.SFC = () => {
   return (<div>Home</div>)
@@ -49,6 +50,7 @@ const App: React.SFC = () => (
         <li><Link to="/TooltipModule">TooltipModule</Link></li>
         <li><Link to="/ListModule">ListModule</Link></li>
         <li><Link to="/ModalModule">ModalModule</Link></li>
+        <li><Link to="/AccordionModule">AccordionModule</Link></li>
       </ul>
 
       <hr />
@@ -73,6 +75,7 @@ const App: React.SFC = () => (
       <Route path="/TooltipModule" component={TooltipModule} />
       <Route path="/ListModule" component={ListModule} />
       <Route path="/ModalModule" component={ModalModule} />
+      <Route path="/AccordionModule" component={AccordionModule} />
     </div>
   </Router>
 )
