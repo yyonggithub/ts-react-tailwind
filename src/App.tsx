@@ -21,6 +21,8 @@ import TextFieldModule from './modules/input/text-field';
 import TextAreaModule from './modules/input/text-area';
 import ModalModule from './modules/modal';
 import AccordionModule from './modules/accordion';
+// import DropdownModule from './modules/dropdown';
+import SelectModule from './modules/select';
 
 const Home: React.SFC = () => {
   return (<div>Home</div>)
@@ -51,6 +53,8 @@ const App: React.SFC = () => (
         <li><Link to="/ListModule">ListModule</Link></li>
         <li><Link to="/ModalModule">ModalModule</Link></li>
         <li><Link to="/AccordionModule">AccordionModule</Link></li>
+        <li><Link to="/SelectModule">SelectModule</Link></li>
+        {/* <li><Link to="/DropdownModule">DropdownModule</Link></li> */}
       </ul>
 
       <hr />
@@ -76,6 +80,8 @@ const App: React.SFC = () => (
       <Route path="/ListModule" component={ListModule} />
       <Route path="/ModalModule" component={ModalModule} />
       <Route path="/AccordionModule" component={AccordionModule} />
+      <Route path="/SelectModule" component={SelectModule} />
+      {/* <Route path="/DropdownModule" component={DropdownModule} /> */}
     </div>
   </Router>
 )

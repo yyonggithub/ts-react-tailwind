@@ -5,8 +5,8 @@ import useFocused from "../../hooks/useFocused";
 
 export type InputProps = {
   className?: classnamesType;
-  value?: string;
-  defaultValue?: string;
+  value?: string | number;
+  defaultValue?: string | number;
   ref?: any;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
