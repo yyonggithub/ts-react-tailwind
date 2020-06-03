@@ -1,5 +1,7 @@
-import React from "react";
-import { CheckboxGroupProps } from "../../components/checkbox/checkbox-group";
+import React, { useState } from "react";
+import CheckBoxGroup, {
+  CheckboxGroupProps,
+} from "../../components/checkbox/checkbox-group";
 import DocGroup from "../../components/doc-group";
 import CheckBox from "../../components/checkbox";
 
@@ -29,12 +31,14 @@ const custom: CheckboxGroupProps = {
     {
       checked: false,
       text: "Customized green",
+      value: "Customized green",
       iconClass: "text-success",
       focusColor: "shadow-outline-success text-success",
     },
     {
       checked: false,
       text: "Customized purple",
+      value: "Customized purple",
       color: "text-info",
       iconClass: "text-info",
       focusColor: "shadow-outline-info text-info",
@@ -43,16 +47,24 @@ const custom: CheckboxGroupProps = {
 };
 
 const CheckBoxModule: React.SFC = () => {
+  const [checked, setChecked] = useState(false);
   return (
     <React.Fragment>
       <DocGroup name="default">
-        <CheckBox text="checkbox1" value="checkbox1" />
+        <CheckBox
+          text="checkbox1"
+          value="checkbox1"
+          checked={checked}
+          onChange={() => {
+            setChecked(!checked);
+          }}
+        />
       </DocGroup>
       <DocGroup name="list">
-        <CheckBox.Group {...list} />
+        <CheckBoxGroup {...list} />
       </DocGroup>
       <DocGroup name="custom">
-        <CheckBox.Group {...custom} />
+        <CheckBoxGroup {...custom} />
       </DocGroup>
     </React.Fragment>
   );
