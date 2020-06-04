@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import DocGroup from '../../components/doc-group';
-import Input from '../../components/input/input';
+import React, { useState } from "react";
+import DocGroup from "../../components/doc-group";
+import Input from "../../components/input/input";
 
 const InputModule: React.SFC = (props) => {
   const [value, setValue] = useState("");
@@ -11,11 +11,14 @@ const InputModule: React.SFC = (props) => {
         <Input
           defaultValue="112233"
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e: any) => {
+            setValue(e.target.nodeValue as string);
+          }}
         />
       </DocGroup>
-      <DocGroup name={"auto-complete"}>
-      </DocGroup>
+      {/* <DocGroup name={"auto-complete"}>
+
+      </DocGroup> */}
     </React.Fragment>
   );
 };

@@ -108,7 +108,7 @@ class ButtonModule extends React.Component {
           <Button>
             <label htmlFor="upload" className="flex items-center">
               File Upload
-              <Icon className="-mr-1 ml-2" icon="#app" />
+              <Icon className="-mr-1 ml-2" icon="app" />
             </label>
             <input id="upload" type="file" className="appearance-none hidden" />
           </Button>

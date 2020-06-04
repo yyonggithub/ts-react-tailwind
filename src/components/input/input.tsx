@@ -1,4 +1,8 @@
-import React, { forwardRef } from "react";
+import React, {
+  forwardRef,
+  InputHTMLAttributes,
+  ChangeEventHandler,
+} from "react";
 import classnames from "classnames";
 import { classnamesType } from "../../interface";
 import useFocused from "../../hooks/useFocused";
@@ -15,8 +19,8 @@ export type InputProps = {
   onMouseUp?: (e: React.MouseEvent<HTMLInputElement>) => void;
   onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+} & Partial<InputHTMLAttributes<HTMLElement>>;
 
 const defaultProps = {};
 

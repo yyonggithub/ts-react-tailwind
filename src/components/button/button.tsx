@@ -47,10 +47,9 @@ const defaultProps = {
   disabledColor: "border border-transparent bg-gray-2 text-gray-6",
 };
 
-// type ButtonProps = BaseButtonProps & Partial<ButtonHTMLAttributes<HTMLElement>>;
-
 interface ButtonProps
-  extends Partial<BaseButtonProps & ButtonHTMLAttributes<HTMLElement>> {}
+  extends BaseButtonProps,
+    Partial<Omit<ButtonHTMLAttributes<HTMLElement>, "className">> {}
 
 /**
  * Button 组件

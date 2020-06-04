@@ -9,7 +9,7 @@ export type TextFieldProps = {
   className?: classnamesType;
   labelClass?: classnamesType;
   insetClass?: classnamesType;
-  value?: string;
+  value?: string | number;
   text?: string;
   placeholder?: string;
   ariaLabel?: string;
@@ -34,15 +34,15 @@ export type TextFieldProps = {
   required?: boolean;
   type?: string;
   defaultValue?: string;
-  align?: string;
-  font?: string;
-  lineHeight?: string;
-  outline?: string;
-  padding?: string;
-  placeholderColor?: string;
-  radius?: string;
-  size?: string;
-  transition?: string;
+  // align?: string;
+  // font?: string;
+  // lineHeight?: string;
+  // outline?: string;
+  // padding?: string;
+  // placeholderColor?: string;
+  // radius?: string;
+  // size?: string;
+  // transition?: string;
   children?: ReactNode;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 } & Partial<typeof defaultProps> &

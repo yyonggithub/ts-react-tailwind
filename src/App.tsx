@@ -24,6 +24,8 @@ import AccordionModule from './modules/accordion';
 // import DropdownModule from './modules/dropdown';
 import SelectModule from './modules/select';
 import TableModule from './modules/tables';
+import SpinnerModule from './modules/spinner';
+import NavModule from './modules/nav';
 
 const Home: React.SFC = () => {
   return (<div>Home</div>)
@@ -56,6 +58,8 @@ const App: React.SFC = () => (
         <li><Link to="/AccordionModule">AccordionModule</Link></li>
         <li><Link to="/SelectModule">SelectModule</Link></li>
         <li><Link to="/TableModule">TableModule</Link></li>
+        <li><Link to="/SpinnerModule">SpinnerModule</Link></li>
+        <li><Link to="/NavModule">NavModule</Link></li>
         {/* <li><Link to="/DropdownModule">DropdownModule</Link></li> */}
       </ul>
 
@@ -84,6 +88,8 @@ const App: React.SFC = () => (
       <Route path="/AccordionModule" component={AccordionModule} />
       <Route path="/SelectModule" component={SelectModule} />
       <Route path="/TableModule" component={TableModule} />
+      <Route path="/SpinnerModule" component={SpinnerModule} />
+      <Route path="/NavModule" component={NavModule} />
       {/* <Route path="/DropdownModule" component={DropdownModule} /> */}
     </div>
   </Router>
