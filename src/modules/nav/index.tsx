@@ -1,15 +1,12 @@
-import React, { FC, useState, createContext, useContext } from "react";
+import React, { FC, useState, createContext } from "react";
 import {
   Route,
-  Link,
   NavLink,
-  BrowserRouter as Router,
   RouteComponentProps,
 } from "react-router-dom";
 import DocGroup from "../../components/doc-group";
 import Nav from "../../components/nav";
 import Button from "../../components/button";
-import Icon from "../../components/icon";
 
 const options = [
   {
@@ -52,10 +49,6 @@ const Page3: FC = () => {
 const Page: FC<RouteComponentProps<{ id: string }>> = (props) => {
   const { match } = props;
   console.log(match);
-  // const { id, handleSetId } = useContext(NavContext);
-  // if (handleSetId) {
-  //   handleSetId(match.params.id);
-  // }
   let component = null;
   switch (match.params.id) {
     case "page1":
@@ -83,10 +76,6 @@ interface INavContext {
   handleSetId?: (id: string) => void;
 }
 
-const NavContext = createContext<INavContext>({
-  id: "",
-});
-
 const NavModule: FC<{
   match: { url: string; params: { [prop: string]: string } };
 }> = (props) => {
@@ -95,10 +84,6 @@ const NavModule: FC<{
 
   const handleSetId = (id: string) => {
     setSelect(id);
-  };
-  const passContext = {
-    id: selected,
-    handleSetId,
   };
   return (
     <>

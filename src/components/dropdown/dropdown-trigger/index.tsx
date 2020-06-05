@@ -32,7 +32,7 @@ const DropdownTrigger: FC<DropdownTriggerProps> = (props) => {
     if (handleRect && triggerRef.current) {
       handleRect(triggerRef.current.getBoundingClientRect());
     }
-  }, [handleRect, triggerRef]);
+  }, [triggerRef]);
 
   const classes = classnames("Dropdown__trigger inline-block", className, {
     "cursor-pointer": !disabled,

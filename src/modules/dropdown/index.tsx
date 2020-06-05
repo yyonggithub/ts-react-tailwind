@@ -22,21 +22,25 @@ const DropdownModule: FC = () => {
         <Dropdown defaultIndex={0} opened={false}>
           <DropdownTrigger>hello world</DropdownTrigger>
           <DropdownContent>
-            <DropdownItem index={0}>one</DropdownItem>
-            <DropdownItem index={1}>two</DropdownItem>
-            <DropdownItem index={2}>three</DropdownItem>
-            <DropdownItem index={3}>four</DropdownItem>
-            <DropdownItem index={4}>five</DropdownItem>
+            {defaultList.list.map((item, index) => {
+              return (
+                <DropdownItem index={item.index} key={item.index}>
+                  {item.text}
+                </DropdownItem>
+              );
+            })}
           </DropdownContent>
         </Dropdown>
         <Dropdown defaultIndex={0} opened={false} disabled>
           <DropdownTrigger>hello world</DropdownTrigger>
           <DropdownContent>
-            <DropdownItem index={0}>one</DropdownItem>
-            <DropdownItem index={1}>two</DropdownItem>
-            <DropdownItem index={2}>three</DropdownItem>
-            <DropdownItem index={3}>four</DropdownItem>
-            <DropdownItem index={4}>five</DropdownItem>
+            {defaultList.list.map((item, index) => {
+              return (
+                <DropdownItem index={item.index} key={item.index}>
+                  {item.text}
+                </DropdownItem>
+              );
+            })}
           </DropdownContent>
         </Dropdown>
       </DocGroup>

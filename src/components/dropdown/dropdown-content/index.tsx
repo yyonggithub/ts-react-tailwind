@@ -12,7 +12,7 @@ const defaultProps = {};
 
 const DropdownContent: FC<DropdownContentProps> = (props) => {
   const { children, className, ...restProps } = props;
-  const { isOpen, index, position } = useContext(DropdownContext);
+  const { isOpen, position } = useContext(DropdownContext);
   const classes = classnames(
     "Dropdown__content absolute dropdown-content",
     "w-auto bg-body border border-normal left-0 overflow-hidden rounded-md shadow-lg z-dropdown",

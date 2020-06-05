@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import classnames from "classnames";
 import { classnamesType } from "../../interface";
 
@@ -34,7 +34,6 @@ const Nav: INav = (props) => {
     size,
     space,
     ariaLabel,
-    ...restProps
   } = props;
 
   const btnProps: BtnProps = {
