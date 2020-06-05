@@ -21,7 +21,7 @@ import TextFieldModule from './modules/input/text-field';
 import TextAreaModule from './modules/input/text-area';
 import ModalModule from './modules/modal';
 import AccordionModule from './modules/accordion';
-// import DropdownModule from './modules/dropdown';
+import DropdownModule from './modules/dropdown';
 import SelectModule from './modules/select';
 import TableModule from './modules/tables';
 import SpinnerModule from './modules/spinner';
@@ -60,7 +60,7 @@ const App: React.SFC = () => (
         <li><Link to="/TableModule">TableModule</Link></li>
         <li><Link to="/SpinnerModule">SpinnerModule</Link></li>
         <li><Link to="/NavModule">NavModule</Link></li>
-        {/* <li><Link to="/DropdownModule">DropdownModule</Link></li> */}
+        <li><Link to="/DropdownModule">DropdownModule</Link></li>
       </ul>
 
       <hr />
@@ -90,7 +90,7 @@ const App: React.SFC = () => (
       <Route path="/TableModule" component={TableModule} />
       <Route path="/SpinnerModule" component={SpinnerModule} />
       <Route path="/NavModule" component={NavModule} />
-      {/* <Route path="/DropdownModule" component={DropdownModule} /> */}
+      <Route path="/DropdownModule" component={DropdownModule} />
     </div>
   </Router>
 )

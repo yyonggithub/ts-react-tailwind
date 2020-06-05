@@ -1,6 +1,12 @@
-import React, { FC, useContext } from "react";
+import React, {
+  FC,
+  useContext,
+  MouseEventHandler,
+  useEffect,
+  useRef,
+} from "react";
 import classnames from "classnames";
-import DropdownContext from "react-overlays/cjs/DropdownContext";
+import { DropdownContext } from "../dropdown";
 
 type DropdownTriggerProps = {
   className?: string;
@@ -11,11 +17,41 @@ const defaultProps = {};
 const DropdownTrigger: FC<DropdownTriggerProps> = (props) => {
   const { className, children, ...restProps } = props;
 
-  const context = useContext(DropdownContext);
+  const {
+    disabled,
+    isOpen,
+    handleOpen,
+    handleSelect,
+    handleRect,
+    rect,
+  } = useContext(DropdownContext);
 
-  const classes = classnames("Dropdown__trigger", className);
+  const triggerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (handleRect && triggerRef.current) {
+      handleRect(triggerRef.current.getBoundingClientRect());
+    }
+  }, [handleRect, triggerRef]);
+
+  const classes = classnames("Dropdown__trigger inline-block", className, {
+    "cursor-pointer": !disabled,
+    "cursor-not-allowed": disabled,
+  });
+
+  const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    if (disabled) return;
+    if (handleOpen) {
+      handleOpen(!isOpen);
+    }
+  };
   return (
-    <div className={classes} {...restProps}>
+    <div
+      className={classes}
+      {...restProps}
+      onClick={handleClick}
+      ref={triggerRef}
+    >
       {children}
     </div>
   );
