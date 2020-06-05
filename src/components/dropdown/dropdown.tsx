@@ -1,4 +1,12 @@
-import React, { FC, createContext, useState } from "react";
+import React, {
+  FC,
+  createContext,
+  useState,
+  useRef,
+  useEffect,
+  MouseEventHandler,
+  MouseEvent,
+} from "react";
 import classnames from "classnames";
 
 type Position = "top" | "right" | "bottom" | "left";
@@ -7,7 +15,6 @@ type DropdownProps = {
   className?: string;
   defaultIndex?: number;
   disabled?: boolean;
-  // position?: Position;
   calculatePosition?: string;
   horizontalPosition?: string;
   initiallyOpened?: boolean;
@@ -22,7 +29,7 @@ type DropdownProps = {
 
 const defaultProps = {
   display: "inline-block",
-  position: "bottom",
+  position: "top" as Position,
 };
 
 interface IDropdownContext {
@@ -32,7 +39,6 @@ interface IDropdownContext {
   rect?: DOMRect;
   handleSelect?: (selected: number) => void;
   handleOpen?: (open: boolean) => void;
-  handleRect?: (rect: DOMRect) => void;
   isOpen?: boolean;
   triggerRef?: any;
 }
@@ -58,6 +64,36 @@ const Dropdown: FC<DropdownProps> = (props) => {
   const [isOpen, setOpen] = useState(opened);
   const [rect, setRect] = useState<DOMRect | undefined>();
 
+  const triggerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const resetRect = () => {
+      if (triggerRef.current) {
+        setRect(triggerRef.current.getBoundingClientRect());
+      }
+    };
+    resetRect();
+    window.addEventListener("resize", resetRect);
+    return () => {
+      window.removeEventListener("resize", resetRect);
+    };
+  }, []);
+
+  useEffect(() => {
+    const contains = (e: MouseEvent) => {
+      if (
+        !(e.target as HTMLDivElement).className.includes("Dropdown__trigger")
+      ) {
+        const have = triggerRef.current?.contains(e.target as Element);
+        setOpen(have ? true : false);
+      }
+    };
+    document.addEventListener("click", contains as any);
+    return () => {
+      document.removeEventListener("click", contains as any);
+    };
+  }, []);
+
   const classes = classnames(
     "Dropdown relative inline-block",
     className,
@@ -70,9 +106,7 @@ const Dropdown: FC<DropdownProps> = (props) => {
   const handleOpen = (open: boolean) => {
     setOpen(open);
   };
-  const handleRect = (rect: DOMRect) => {
-    setRect(rect);
-  };
+
   const passedContext: IDropdownContext = {
     index: typeof currentActive !== "undefined" ? currentActive : undefined,
     disabled,
@@ -81,10 +115,9 @@ const Dropdown: FC<DropdownProps> = (props) => {
     rect,
     handleOpen,
     handleSelect,
-    handleRect,
   };
   return (
-    <div className={classes}>
+    <div className={classes} ref={triggerRef}>
       <DropdownContext.Provider value={passedContext}>
         {children}
       </DropdownContext.Provider>

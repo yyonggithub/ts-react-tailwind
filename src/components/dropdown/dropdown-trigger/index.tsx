@@ -1,10 +1,4 @@
-import React, {
-  FC,
-  useContext,
-  MouseEventHandler,
-  useEffect,
-  useRef,
-} from "react";
+import React, { FC, useContext, MouseEventHandler, useRef } from "react";
 import classnames from "classnames";
 import { DropdownContext } from "../dropdown";
 
@@ -17,22 +11,7 @@ const defaultProps = {};
 const DropdownTrigger: FC<DropdownTriggerProps> = (props) => {
   const { className, children, ...restProps } = props;
 
-  const {
-    disabled,
-    isOpen,
-    handleOpen,
-    handleSelect,
-    handleRect,
-    rect,
-  } = useContext(DropdownContext);
-
-  const triggerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (handleRect && triggerRef.current) {
-      handleRect(triggerRef.current.getBoundingClientRect());
-    }
-  }, [triggerRef]);
+  const { disabled, isOpen, handleOpen } = useContext(DropdownContext);
 
   const classes = classnames("Dropdown__trigger inline-block", className, {
     "cursor-pointer": !disabled,
@@ -46,12 +25,7 @@ const DropdownTrigger: FC<DropdownTriggerProps> = (props) => {
     }
   };
   return (
-    <div
-      className={classes}
-      {...restProps}
-      onClick={handleClick}
-      ref={triggerRef}
-    >
+    <div className={classes} {...restProps} onClick={handleClick}>
       {children}
     </div>
   );
