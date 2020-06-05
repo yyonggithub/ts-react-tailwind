@@ -7,7 +7,7 @@ import {
   RouteComponentProps,
 } from "react-router-dom";
 import DocGroup from "../../components/doc-group";
-import Nav, { BtnProps } from "../../components/nav";
+import Nav from "../../components/nav";
 import Button from "../../components/button";
 import Icon from "../../components/icon";
 
@@ -87,7 +87,6 @@ const NavContext = createContext<INavContext>({
   id: "",
 });
 
-// TODO: 丢失图标
 const NavModule: FC<{
   match: { url: string; params: { [prop: string]: string } };
 }> = (props) => {
@@ -159,6 +158,7 @@ const NavModule: FC<{
                 }
                 focusColor="bg-primary-bright"
                 icon={item.icon}
+                iconMargin={"mr-2"}
               >
                 <NavLink
                   to={`${match.url + "/" + item.route}`}
@@ -186,13 +186,6 @@ const NavModule: FC<{
           render={() => <h3>Please select a url.</h3>}
         />
       </div>
-      <DocGroup name="asdf">
-        {options.map((item, index) => {
-          return <Icon icon={"duplicate"} key={index} />;
-        })}
-        <Icon icon="align-bottom"></Icon>
-        <Icon size="24px" icon="align-bottom"></Icon>
-      </DocGroup>
     </>
   );
 };
