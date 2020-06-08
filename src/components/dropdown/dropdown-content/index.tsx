@@ -1,5 +1,6 @@
 import React, { FC, useContext, CSSProperties, useMemo } from "react";
 import classnames from "classnames";
+import { CSSTransition } from "react-transition-group";
 import { classnamesType } from "../../../interface";
 import { DropdownContext } from "../dropdown";
 import "./style.scss";
@@ -12,21 +13,21 @@ const defaultProps = {};
 
 const DropdownContent: FC<DropdownContentProps> = (props) => {
   const { children, className, ...restProps } = props;
-  const { isOpen, position, rect } = useContext(DropdownContext);
+  const { isOpen, position, rect, offset } = useContext(DropdownContext);
   const classes = classnames(
     "Dropdown__content absolute dropdown-content",
     "w-auto bg-body border border-normal left-0 overflow-hidden rounded-md shadow-lg z-dropdown",
-    className,
-    `dropdown-content-${position}`
+    "min-w-max-content",
+    className
   );
-  const offset = 5;
 
   const style = useMemo(() => {
     let style: CSSProperties;
     switch (position) {
       case "top":
         style = {
-          top: `${-offset}px`,
+          top: `-${offset}px`,
+          transform: `translateY(-100%)`,
         };
         break;
       case "right":
@@ -40,6 +41,7 @@ const DropdownContent: FC<DropdownContentProps> = (props) => {
         style = {
           top: "0px",
           left: `-${offset}px`,
+          transform: `translateX(-100%)`,
         };
         break;
       case "bottom":

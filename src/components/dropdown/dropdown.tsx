@@ -4,10 +4,13 @@ import React, {
   useState,
   useRef,
   useEffect,
-  MouseEventHandler,
   MouseEvent,
 } from "react";
 import classnames from "classnames";
+import DropdownTrigger from "./dropdown-trigger";
+import DropdownDivider from "./dropdown-divider";
+import DropdownItem from "./dropdown-item";
+import DropdownContent from "./dropdown-content";
 
 type Position = "top" | "right" | "bottom" | "left";
 
@@ -19,9 +22,7 @@ type DropdownProps = {
   horizontalPosition?: string;
   initiallyOpened?: boolean;
   matchTriggerWidth?: string;
-  opened: boolean;
-  onClose?: () => void;
-  onOpen?: () => void;
+  onClick?: (i: number) => void;
   preventScroll?: string;
   renderInPlace?: string;
   verticalPosition?: string;
@@ -29,7 +30,9 @@ type DropdownProps = {
 
 const defaultProps = {
   display: "inline-block",
-  position: "top" as Position,
+  position: "bottom" as Position,
+  offset: 5,
+  opened: false,
 };
 
 interface IDropdownContext {
@@ -41,6 +44,7 @@ interface IDropdownContext {
   handleOpen?: (open: boolean) => void;
   isOpen?: boolean;
   triggerRef?: any;
+  offset?: number;
 }
 
 export const DropdownContext = createContext<IDropdownContext>({
@@ -48,7 +52,14 @@ export const DropdownContext = createContext<IDropdownContext>({
   isOpen: false,
 });
 
-const Dropdown: FC<DropdownProps> = (props) => {
+interface IDropdown extends FC<DropdownProps> {
+  Trigger: typeof DropdownTrigger;
+  Divider: typeof DropdownDivider;
+  Item: typeof DropdownItem;
+  Content: typeof DropdownContent;
+}
+
+const Dropdown: IDropdown = (props) => {
   const {
     children,
     className,
@@ -57,6 +68,8 @@ const Dropdown: FC<DropdownProps> = (props) => {
     disabled,
     opened,
     position,
+    offset,
+    onClick,
     ...restProps
   } = props;
 
@@ -74,23 +87,20 @@ const Dropdown: FC<DropdownProps> = (props) => {
     };
     resetRect();
     window.addEventListener("resize", resetRect);
-    return () => {
-      window.removeEventListener("resize", resetRect);
-    };
-  }, []);
 
-  useEffect(() => {
     const contains = (e: MouseEvent) => {
       if (
-        !(e.target as HTMLDivElement).className.includes("Dropdown__trigger")
+        !(e.target as HTMLDivElement).className.includes("Dropdown__trigger") &&
+        !disabled &&
+        !triggerRef.current?.contains(e.target as Element)
       ) {
-        const have = triggerRef.current?.contains(e.target as Element);
-        setOpen(have ? true : false);
+        setOpen(false);
       }
     };
-    document.addEventListener("click", contains as any);
+    window.addEventListener("click", contains as any);
     return () => {
-      document.removeEventListener("click", contains as any);
+      window.removeEventListener("resize", resetRect);
+      window.removeEventListener("click", contains as any);
     };
   }, []);
 
@@ -102,9 +112,14 @@ const Dropdown: FC<DropdownProps> = (props) => {
 
   const handleSelect = (index: number) => {
     setActive(index);
+    if (onClick) {
+      onClick(index);
+    }
   };
   const handleOpen = (open: boolean) => {
-    setOpen(open);
+    if (!disabled) {
+      setOpen(open);
+    }
   };
 
   const passedContext: IDropdownContext = {
@@ -113,11 +128,12 @@ const Dropdown: FC<DropdownProps> = (props) => {
     position,
     isOpen,
     rect,
+    offset,
     handleOpen,
     handleSelect,
   };
   return (
-    <div className={classes} ref={triggerRef}>
+    <div className={classes} ref={triggerRef} {...restProps}>
       <DropdownContext.Provider value={passedContext}>
         {children}
       </DropdownContext.Provider>
@@ -127,5 +143,9 @@ const Dropdown: FC<DropdownProps> = (props) => {
 
 Dropdown.defaultProps = defaultProps;
 Dropdown.displayName = "Dropdown";
+Dropdown.Trigger = DropdownTrigger;
+Dropdown.Content = DropdownContent;
+Dropdown.Divider = DropdownDivider;
+Dropdown.Item = DropdownItem;
 
 export default Dropdown;

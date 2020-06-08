@@ -155,12 +155,12 @@ const DropdownItem: FC<DropdownItemProps> = (props) => {
       className={classes}
       role={"link"}
       tabIndex={tabindex}
-      {...restProps}
       onClick={handleClick}
       onBlur={handleBlur}
       onFocus={handleFocus}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
+      {...restProps}
     >
       {children}
     </li>

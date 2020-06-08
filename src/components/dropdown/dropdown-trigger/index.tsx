@@ -19,7 +19,6 @@ const DropdownTrigger: FC<DropdownTriggerProps> = (props) => {
   });
 
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
-    if (disabled) return;
     if (handleOpen) {
       handleOpen(!isOpen);
     }
