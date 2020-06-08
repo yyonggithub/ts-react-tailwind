@@ -26,6 +26,7 @@ import SelectModule from './modules/select';
 import TableModule from './modules/tables';
 import SpinnerModule from './modules/spinner';
 import NavModule from './modules/nav';
+import ColorPickerModule from './modules/color-picker';
 
 const Home: React.SFC = () => {
   return (<div>Home</div>)
@@ -61,6 +62,7 @@ const App: React.SFC = () => (
         <li><Link to="/SpinnerModule">SpinnerModule</Link></li>
         <li><Link to="/NavModule">NavModule</Link></li>
         <li><Link to="/DropdownModule">DropdownModule</Link></li>
+        <li><Link to="/ColorPickerModule">ColorPickerModule</Link></li>
       </ul>
 
       <hr />
@@ -91,6 +93,7 @@ const App: React.SFC = () => (
       <Route path="/SpinnerModule" component={SpinnerModule} />
       <Route path="/NavModule" component={NavModule} />
       <Route path="/DropdownModule" component={DropdownModule} />
+      <Route path="/ColorPickerModule" component={ColorPickerModule} />
     </div>
   </Router>
 )
