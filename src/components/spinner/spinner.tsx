@@ -1,4 +1,4 @@
-import React, { FC, useState, useReducer } from "react";
+import React, { FC, useReducer } from "react";
 import Input from "../input/input";
 import Button from "../button";
 
@@ -38,7 +38,7 @@ const reducer = (
 
 // TODO: 未完成
 const Spinner: FC<SpinnerProps> = (props) => {
-  const { children, max, min, value, step, onChange, ...restProps } = props;
+  const { max, min, value, step, onChange } = props;
   const initialState = {
     count: value || 0,
     max: max || Number.MAX_SAFE_INTEGER,

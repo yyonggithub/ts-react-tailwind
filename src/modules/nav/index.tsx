@@ -1,4 +1,4 @@
-import React, { FC, useState, createContext } from "react";
+import React, { FC, useState } from "react";
 import {
   Route,
   NavLink,
@@ -82,9 +82,9 @@ const NavModule: FC<{
   const { match } = props;
   const [selected, setSelect] = useState("");
 
-  const handleSetId = (id: string) => {
-    setSelect(id);
-  };
+  // const handleSetId = (id: string) => {
+  //   setSelect(id);
+  // };
   return (
     <>
       <DocGroup name="default">
