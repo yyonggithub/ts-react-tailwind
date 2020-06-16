@@ -8,6 +8,7 @@ import Overlay from "../overlay";
 type TooltipProps = {
   className?: classnamesType;
   render: () => ReactNode;
+  offSize?: number;
 } & Partial<typeof defaultProps>;
 
 const defaultProps = {
@@ -15,11 +16,22 @@ const defaultProps = {
 };
 
 const Tooltip: FC<TooltipProps> = (props) => {
-  const { children, className, render, placement, ...restProps } = props;
+  const {
+    children,
+    className,
+    render,
+    placement,
+    offSize,
+    ...restProps
+  } = props;
 
   const triggerRef = useRef<HTMLElement>(null);
+
   const [show, setShow] = useState(false);
 
+  const getTrigger = () => {
+    return triggerRef.current;
+  };
   return (
     <>
       <span
@@ -28,22 +40,22 @@ const Tooltip: FC<TooltipProps> = (props) => {
           setShow(true);
         }}
         onMouseLeave={() => {
-          setShow(false);
+          setShow(true);
         }}
         ref={triggerRef}
         {...restProps}
       >
         {children}
       </span>
-      {
+      {show ? (
         <Overlay
-          show={show}
-          placement={placement || 'top'}
-          triggerRef={triggerRef}
+          placement={placement || "top"}
+          getTrigger={getTrigger}
+          arrowSize={offSize}
         >
           {render()}
         </Overlay>
-      }
+      ) : null}
     </>
   );
 };
@@ -52,4 +64,3 @@ Tooltip.defaultProps = defaultProps;
 Tooltip.displayName = "Tooltip";
 
 export default Tooltip;
-

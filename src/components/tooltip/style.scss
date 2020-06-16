@@ -1,11 +1,18 @@
 ._tooltip {
   padding: 0 5px;
-  &.left,
-  &.right {
+  &.left-start &.left,
+  &.left-end,
+  &.right-start,
+  &.right,
+  &.right-end {
     padding: 0 5px;
   }
+  &.top-start,
   &.top,
-  &.bottom {
+  &.top-end,
+  &.bottom-start,
+  &.bottom,
+  &.bottom-end {
     padding: 5px 0;
   }
 }
@@ -25,21 +32,29 @@
   height: 0;
   border-style: solid;
   // opacity: 0.75;
+  &.left-start,
+  &.left-end,
   &.left {
     right: 0;
     border-width: 5px 0 5px 5px;
     border-color: transparent transparent transparent #000;
   }
+  &.right-start,
+  &.right-end,
   &.right {
     left: 0;
     border-width: 5px 5px 5px 0;
     border-color: transparent #232323 transparent transparent;
   }
+  &.top-start,
+  &.top-end,
   &.top {
     bottom: 0;
     border-width: 5px 5px 0;
     border-color: #232323 transparent transparent transparent;
   }
+  &.bottom-start,
+  &.bottom-end,
   &.bottom {
     top: 0;
     border-width: 0 5px 5px;

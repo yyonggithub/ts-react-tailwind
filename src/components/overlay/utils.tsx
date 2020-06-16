@@ -1,8 +1,7 @@
-import { CSSProperties } from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
 export const createObserver = (
-  node: HTMLElement,
+  node: Element,
   handleEvent: (entries: ResizeObserverEntry[]) => void
 ) => {
   const ro = new ResizeObserver((entries) => handleEvent(entries));
@@ -10,7 +9,19 @@ export const createObserver = (
   return ro;
 };
 
-export type Placement = "top" | "right" | "bottom" | "left";
+export type Placement =
+  | "top-start"
+  | "top"
+  | "top-end"
+  | "right-start"
+  | "right"
+  | "right-end"
+  | "bottom-start"
+  | "bottom"
+  | "bottom-end"
+  | "left-start"
+  | "left"
+  | "left-end";
 
 export const handlePosition = (
   overlay: HTMLElement,
@@ -27,21 +38,55 @@ export const handlePosition = (
   const offsetTop = triggerRect.top - offsetRect.top;
   const offsetLeft = triggerRect.left - offsetRect.left;
 
+  // console.log("offsetRect", offsetRect);
+
   switch (placement) {
+    case "top-start":
+      style.top = offsetTop - overlayRect.height - arrowSize;
+      style.left = offsetLeft + triggerRect.left;
+      break;
     case "top":
       style.top = offsetTop - overlayRect.height - arrowSize;
       style.left = offsetLeft + (triggerRect.width - overlayRect.width) / 2;
+      break;
+    case "top-end":
+      style.top = offsetTop - overlayRect.height - arrowSize;
+      style.left = offsetLeft + (triggerRect.width - overlayRect.width);
+      break;
+    case "bottom-start":
+      style.top = offsetTop + triggerRect.height + arrowSize;
+      style.left = offsetLeft;
       break;
     case "bottom":
       style.top = offsetTop + triggerRect.height + arrowSize;
       style.left = offsetLeft + (triggerRect.width - overlayRect.width) / 2;
       break;
+    case "bottom-end":
+      style.top = offsetTop + triggerRect.height + arrowSize;
+      style.left = offsetLeft + (triggerRect.width - overlayRect.width);
+      break;
+    case "left-start":
+      style.top = offsetTop;
+      style.left = offsetLeft - overlayRect.width - arrowSize;
+      break;
     case "left":
       style.top = offsetTop + (triggerRect.height - overlayRect.height) / 2;
       style.left = offsetLeft - overlayRect.width - arrowSize;
       break;
+    case "left-end":
+      style.top = offsetTop + (triggerRect.height - overlayRect.height);
+      style.left = offsetLeft - overlayRect.width - arrowSize;
+      break;
+    case "right-start":
+      style.top = offsetTop;
+      style.left = offsetLeft + triggerRect.width + arrowSize;
+      break;
     case "right":
       style.top = offsetTop + (triggerRect.height - overlayRect.height) / 2;
+      style.left = offsetLeft + triggerRect.width + arrowSize;
+      break;
+    case "right-end":
+      style.top = offsetTop + (triggerRect.height - overlayRect.height);
       style.left = offsetLeft + triggerRect.width + arrowSize;
       break;
     default:

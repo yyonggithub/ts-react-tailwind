@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useRef,
   cloneElement,
-  RefObject,
   isValidElement,
 } from "react";
 import { createPortal } from "react-dom";
@@ -27,9 +26,8 @@ export type IPosition = {
 };
 
 type OverlayProps = {
-  show: boolean;
   handleShow?: (s: boolean) => void;
-  triggerRef: RefObject<HTMLElement>;
+  getTrigger: () => HTMLElement | null;
   placement: Placement;
   arrowSize?: number;
 } & Partial<typeof defaultProps>;
@@ -42,9 +40,8 @@ const Overlay: FC<OverlayProps> = (props) => {
   const {
     children,
     hasOverlay,
-    show,
     handleShow,
-    triggerRef,
+    getTrigger,
     placement,
     arrowSize,
     ...restProps
@@ -57,7 +54,7 @@ const Overlay: FC<OverlayProps> = (props) => {
   const getPosition = () => {
     const containerNode = containerRef.current;
     const overlayNode = overlayRef.current;
-    const triggerNode = triggerRef?.current;
+    const triggerNode = getTrigger();
     if (overlayNode && triggerNode && containerNode) {
       const pos = handlePosition(
         overlayNode,
@@ -66,58 +63,66 @@ const Overlay: FC<OverlayProps> = (props) => {
         placement,
         arrowSize
       );
-      console.log(pos);
+      // console.log(pos);
+
       setPosition(pos);
       setDivStyle({
         position: "absolute",
-        top: `${pos.offset.top}px`,
-        left: `${pos.offset.left}px`,
-        // color: "red",
+        top: `${pos.rect.top}px`,
+        left: `${pos.rect.left}px`,
       });
     }
   };
   useEffect(() => {
     let ro: ResizeObserver | undefined = undefined;
+    let triggerRo: ResizeObserver | undefined = undefined;
     if (containerRef.current) {
       ro = createObserver(containerRef.current, getPosition);
     }
-    return () => ro?.disconnect();
+    const triggerEle = getTrigger();
+    if (triggerEle) {
+      triggerRo = createObserver(triggerEle, getPosition);
+    }
+    return () => {
+      ro?.disconnect();
+      triggerRo?.disconnect();
+    };
   }, []);
 
-  return show
-    ? createPortal(
-        <>
-          {hasOverlay ? (
-            <div
-              style={{
-                position: "fixed",
-                top: "0",
-                left: "0",
-                height: "100%",
-                width: "100%",
-              }}
-              onClick={() => {
-                if (handleShow) {
-                  handleShow(false);
-                }
-              }}
-            ></div>
-          ) : null}
-          <div ref={overlayRef} style={divStyle} {...restProps}>
-            {React.Children.map(children, (child) => {
-              if (isValidElement(child)) {
-                return cloneElement(child, {
-                  placement,
-                  position,
-                });
-              }
-              return child;
-            })}
-          </div>
-        </>,
-        document.querySelector("body") as HTMLElement
-      )
-    : null;
+  return createPortal(
+    <>
+      {hasOverlay ? (
+        <div
+          style={{
+            position: "fixed",
+            top: "0",
+            left: "0",
+            height: "100%",
+            width: "100%",
+          }}
+          onClick={() => {
+            if (handleShow) {
+              handleShow(false);
+            }
+          }}
+        ></div>
+      ) : null}
+      <div className="Overlay" ref={overlayRef} style={divStyle} {...restProps}>
+        <div className="inline-block">
+          {React.Children.map(children, (child) => {
+            if (isValidElement(child)) {
+              return cloneElement(child, {
+                placement,
+                position,
+              });
+            }
+            return child;
+          })}
+        </div>
+      </div>
+    </>,
+    document.querySelector("body") as HTMLElement
+  );
 };
 
 Overlay.defaultProps = defaultProps;
