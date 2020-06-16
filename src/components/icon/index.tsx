@@ -4,9 +4,10 @@ import classnames from "classnames";
 import { classnamesType } from "../../interface";
 
 type Props = {
-  icon: string;
+  icon?: string;
   className?: classnamesType;
   style?: any;
+  src?: string;
 } & Partial<typeof defaultProps>;
 
 const defaultProps = {
@@ -25,6 +26,15 @@ class Icon extends React.PureComponent<Props, {}> {
     ];
     return classnames(list);
   }
+
+  getSrc() {
+    const { src, icon } = this.props;
+    if (src) {
+      return src;
+    }
+    return `assets/svg/${this.props.icon}.svg`;
+  }
+
   render() {
     const style = {
       width: this.props.size,
@@ -39,7 +49,7 @@ class Icon extends React.PureComponent<Props, {}> {
       >
         <ReactSVG
           style={style}
-          src={`assets/svg/${this.props.icon}.svg`}
+          src={this.getSrc()}
           className={"fill-current"}
         />
       </div>
