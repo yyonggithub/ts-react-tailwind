@@ -32,7 +32,7 @@ class Icon extends React.PureComponent<Props, {}> {
     if (src) {
       return src;
     }
-    return `assets/svg/${this.props.icon}.svg`;
+    return `assets/svg/${icon}.svg`;
   }
 
   render() {
