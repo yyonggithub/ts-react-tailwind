@@ -1,35 +1,20 @@
 import React, { FC, useState } from "react";
 import DocGroup from "../../components/doc-group";
-import { SketchPicker, ColorChangeHandler, ColorResult } from "react-color";
-import Button from "../../components/button";
+import { ColorChangeHandler, ColorResult } from "react-color";
+import ColorPicker from "../../components/color-picker";
 
 const ColorPickerModule: FC = () => {
-  const [show, setShow] = useState(false);
+  // eslint-disable-next-line
   const [color, setColor] = useState<ColorResult | undefined>();
   const handleChange: ColorChangeHandler = (color, event) => {
     console.log(color);
     setColor(color);
   };
-  const handleShow = () => {
-    setShow(!show);
-  };
 
   return (
     <>
       <DocGroup name="default">
-        <div className="relative">
-          <Button
-            style={{
-              backgroundColor: color?.hex,
-            }}
-            onClick={handleShow}
-          ></Button>
-          {show ? (
-            <div className="absolute">
-              <SketchPicker onChange={handleChange} color={color?.hex} />
-            </div>
-          ) : null}
-        </div>
+        <ColorPicker onChange={handleChange} />
       </DocGroup>
     </>
   );
