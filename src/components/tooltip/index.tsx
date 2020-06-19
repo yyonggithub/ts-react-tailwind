@@ -40,7 +40,7 @@ const Tooltip: FC<TooltipProps> = (props) => {
           setShow(true);
         }}
         onMouseLeave={() => {
-          setShow(true);
+          setShow(false);
         }}
         ref={triggerRef}
         {...restProps}

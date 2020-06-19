@@ -1,7 +1,6 @@
-import React, { FC, MouseEventHandler, useContext } from "react";
+import React, { FC, MouseEventHandler } from "react";
 import classnames from "classnames";
 import { classnamesType } from "../../../interface";
-import { SelectContext } from "..";
 import useFocused from "../../../hooks/useFocused";
 
 type SelectItemProps = {
@@ -19,6 +18,9 @@ type SelectItemProps = {
   iconClass?: string;
   icon?: string;
   textClass?: string;
+  handleChange?: (value: string | number) => void;
+  handleOpen?: () => void;
+  currentValue?: string | number;
   onClick?: MouseEventHandler<HTMLLIElement>;
 } & Partial<typeof defaultProps>;
 
@@ -61,6 +63,9 @@ const SelectItem: FC<SelectItemProps> = (props) => {
     icon: _icon,
     textClass,
     onClick,
+    handleChange,
+    handleOpen,
+    currentValue,
     ...restProps
   } = props;
 
@@ -72,9 +77,9 @@ const SelectItem: FC<SelectItemProps> = (props) => {
     handleMouseLeave,
   } = useFocused(props as any, false);
 
-  const { value: _value, handleChange, handleOpen } = useContext(SelectContext);
+  // const { value: _value, handleChange, handleOpen } = useContext(SelectContext);
 
-  const selected = value === _value;
+  const selected = value === currentValue;
 
   const ariaLabel = (() => _ariaLabel || _text || undefined)();
 

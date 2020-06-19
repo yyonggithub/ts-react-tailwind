@@ -33,13 +33,13 @@ type OverlayProps = {
 } & Partial<typeof defaultProps>;
 
 const defaultProps = {
-  hasOverlay: false,
+  hasMask: false,
 };
 
 const Overlay: FC<OverlayProps> = (props) => {
   const {
     children,
-    hasOverlay,
+    hasMask,
     handleShow,
     getTrigger,
     placement,
@@ -64,15 +64,17 @@ const Overlay: FC<OverlayProps> = (props) => {
         arrowSize
       );
       // console.log(pos);
-
       setPosition(pos);
       setDivStyle({
         position: "absolute",
-        top: `${pos.rect.top}px`,
-        left: `${pos.rect.left}px`,
+        top: `${pos.offset.top}px`,
+        left: `${pos.offset.left}px`,
+        opacity: 1,
+        transition: `opacity .2s ease-in-out`,
       });
     }
   };
+
   useEffect(() => {
     let ro: ResizeObserver | undefined = undefined;
     let triggerRo: ResizeObserver | undefined = undefined;
@@ -87,11 +89,12 @@ const Overlay: FC<OverlayProps> = (props) => {
       ro?.disconnect();
       triggerRo?.disconnect();
     };
+    // eslint-disable-next-line
   }, []);
 
   return createPortal(
     <>
-      {hasOverlay ? (
+      {hasMask ? (
         <div
           style={{
             position: "fixed",
@@ -107,7 +110,12 @@ const Overlay: FC<OverlayProps> = (props) => {
           }}
         ></div>
       ) : null}
-      <div className="Overlay" ref={overlayRef} style={divStyle} {...restProps}>
+      <div
+        className="opacity-0"
+        ref={overlayRef}
+        style={divStyle}
+        {...restProps}
+      >
         <div className="inline-block">
           {React.Children.map(children, (child) => {
             if (isValidElement(child)) {

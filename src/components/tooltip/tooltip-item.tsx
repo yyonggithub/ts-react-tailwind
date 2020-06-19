@@ -106,6 +106,7 @@ const TooltipItem: FC<TooltipProps> = (props) => {
     return () => {
       ro.disconnect();
     };
+    // eslint-disable-next-line
   }, []);
   return (
     <div
