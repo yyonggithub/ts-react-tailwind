@@ -254,6 +254,7 @@ class ButtonGroup extends React.Component<ButtonGroupProps, State> {
         item.selected = false;
       }
     });
+
     this.setState({
       selected: list,
     });

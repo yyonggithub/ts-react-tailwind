@@ -1,6 +1,6 @@
 import React, { FC, useContext, CSSProperties, useMemo } from "react";
 import classnames from "classnames";
-import { CSSTransition } from "react-transition-group";
+// import { CSSTransition } from "react-transition-group";
 import { classnamesType } from "../../../interface";
 import { DropdownContext } from "../dropdown";
 import "./style.scss";

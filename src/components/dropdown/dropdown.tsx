@@ -102,6 +102,7 @@ const Dropdown: IDropdown = (props) => {
       window.removeEventListener("resize", resetRect);
       window.removeEventListener("click", contains as any);
     };
+    // eslint-disable-next-line
   }, []);
 
   const classes = classnames(

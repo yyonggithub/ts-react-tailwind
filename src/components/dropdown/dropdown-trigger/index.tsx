@@ -1,4 +1,4 @@
-import React, { FC, useContext, MouseEventHandler, useRef } from "react";
+import React, { FC, useContext, MouseEventHandler } from "react";
 import classnames from "classnames";
 import { DropdownContext } from "../dropdown";
 
