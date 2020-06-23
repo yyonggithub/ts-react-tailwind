@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { Component } from "react";
 import classnames from "classnames";
 import Button from "..";
 import { presetType } from "../button";
@@ -22,22 +22,43 @@ export type Option = {
 type Preset = presetType;
 
 export type ButtonGroupProps = {
+  /** 定义onClick 是否有效 需要和toggleable 同时起作用  */
   multiple?: boolean;
+  /** button 是否是选中状态 */
   selector?: boolean;
+  /** 尺寸 */
   size?: string;
+  /** 水平排列还是竖直排列 */
   orientation?: "vertical" | "";
+  /** 显示属性 */
   display?: string;
+  /** 对齐属性 */
   align?: string;
+  /** 外边框圆角属性 */
   radius?: string;
+  /** 元素无效时的样式及颜色 */
   disabledColor?: string;
+  /** 组件预制样式 */
   preset?: Preset;
+  /** 组件是否可用 */
   disabled?: boolean;
+  /** 字体样式 */
   font?: string;
+  /** button 是否进行切换处理 */
   toggleable?: boolean;
+  /** button 参数列表 */
   options: Option[];
-} & Partial<typeof defaultProps>;
+} & Partial<IDefaultProps>;
 
-const defaultProps = {
+interface IDefaultProps {
+  /**
+   * 轮廓属性
+   * @default focus:outline-none
+   */
+  outline: string;
+}
+
+const defaultProps: IDefaultProps = {
   outline: "focus:outline-none",
 };
 
@@ -49,7 +70,7 @@ type State = {
   }[];
 };
 
-class ButtonGroup extends React.Component<ButtonGroupProps, State> {
+export class ButtonGroup extends Component<ButtonGroupProps, State> {
   static defaultProps = defaultProps;
 
   constructor(props: ButtonGroupProps) {

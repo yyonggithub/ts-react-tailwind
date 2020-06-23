@@ -1,8 +1,4 @@
-import React, {
-  ButtonHTMLAttributes,
-  useMemo,
-  forwardRef,
-} from "react";
+import React, { ButtonHTMLAttributes, useMemo, forwardRef } from "react";
 import classnames from "classnames";
 import Icon from "../icon";
 import { classnamesType } from "../../interface";
@@ -16,7 +12,7 @@ export type presetType =
   | "danger"
   | "text";
 
-export interface BaseButtonProps extends Partial<typeof defaultProps> {
+export interface BaseButtonProps extends Partial<IDefaultProps> {
   /** 组件class属性 */
   className?: classnamesType;
   /** 获得焦点时的颜色 */
@@ -35,20 +31,78 @@ export interface BaseButtonProps extends Partial<typeof defaultProps> {
   icon?: string;
   /** 组件尺寸 */
   size?: string | boolean;
-  /** 组件预制样式 "default" | "primary" | "secondary" | "danger" | "text" */
+  /** 组件预制样式 */
   preset?: presetType;
   /** 组件颜色 */
   color?: string;
+  /** icon 外边距 */
   iconMargin?: string;
+  /** icon 颜色 */
   iconColor?: string;
+  /** icon 尺寸 */
   iconSize?: string;
   isOpen?: boolean;
+  /** 扩展 icon (右边的icon) */
   extendIcon?: string;
   zIndex?: string;
   // [other: string]: any;
 }
 
-const defaultProps = {
+interface IDefaultProps {
+  /**
+   * 文本内容
+   * @default
+   */
+  text: string;
+  /**
+   * 对齐方式
+   * @default justify-center items-center
+   */
+  align: string;
+  /**
+   * 显示样式
+   * @default inline-flex
+   */
+  display: string;
+  /**
+   * flex收缩规则
+   * @default flex-shrink-0
+   */
+  shrink: string;
+  /**
+   * 字体尺寸
+   * @default text-sm font-medium
+   */
+  font: string;
+  /**
+   * 轮廓属性
+   * @default focus:outline-none
+   */
+  outline: string;
+  /**
+   * 外边框圆角属性
+   * @default rounded-md
+   */
+  radius: string;
+  /**
+   * 多行元素空间量
+   * @default leading-5
+   */
+  lineHeight: string;
+  // extendIcon: '#outline-small-down-16',
+  /**
+   * 动画速度的方法
+   * @default transition ease-in-out duration-200
+   */
+  transition: string;
+  /**
+   * 元素无效时的样式及颜色
+   * @default border border-transparent bg-gray-2 text-gray-6
+   */
+  disabledColor: string;
+}
+
+const defaultProps: IDefaultProps = {
   text: "",
   align: "justify-center items-center",
   display: "inline-flex",
