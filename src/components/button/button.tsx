@@ -1,4 +1,8 @@
-import React, { ButtonHTMLAttributes, useMemo, forwardRef } from "react";
+import React, {
+  ButtonHTMLAttributes,
+  useMemo,
+  forwardRef,
+} from "react";
 import classnames from "classnames";
 import Icon from "../icon";
 import { classnamesType } from "../../interface";
@@ -12,17 +16,28 @@ export type presetType =
   | "danger"
   | "text";
 
-interface BaseButtonProps extends Partial<typeof defaultProps> {
+export interface BaseButtonProps extends Partial<typeof defaultProps> {
+  /** 组件class属性 */
   className?: classnamesType;
+  /** 获得焦点时的颜色 */
   focusColor?: string[] | string;
+  /** aria-label */
   ariaLabel?: string;
+  /** 组件是否可用 */
   disabled?: boolean;
+  /** 组件是否是loading状态 */
   loading?: boolean;
+  /** 组件是否被选中状态 */
   selected?: boolean;
+  /** padding class属性 */
   padding?: boolean | string;
+  /** 组件的icon */
   icon?: string;
+  /** 组件尺寸 */
   size?: string | boolean;
+  /** 组件预制样式 "default" | "primary" | "secondary" | "danger" | "text" */
   preset?: presetType;
+  /** 组件颜色 */
   color?: string;
   iconMargin?: string;
   iconColor?: string;
@@ -56,7 +71,7 @@ interface ButtonProps
  * @version package.json
  * @visibleName Button 组件名称
  */
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props: ButtonProps, ref) => {
     const focus = useFocused(props, false);
     const {
