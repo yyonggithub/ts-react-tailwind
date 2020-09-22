@@ -1,8 +1,17 @@
 import React, { FC } from "react";
+import classnames from "classnames";
 import "../../index.css";
 
-const Layout: FC = ({ children }) => {
-  return <div className="px-10 flex space-x-5 flex-wrap">{children}</div>;
+interface IProps {
+  className?: string;
+}
+
+const Layout: FC<IProps> = ({ className, children }) => {
+  return (
+    <div className={classnames("px-10 py-10 flex flex-wrap", className)}>
+      {children}
+    </div>
+  );
 };
 
 export default Layout;

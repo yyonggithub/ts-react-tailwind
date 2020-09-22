@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info';
 import Layout from '../src/components/layout';
 
 
-addDecorator(storyFn => <Layout>{storyFn()}</Layout>);
+// addDecorator(storyFn => <Layout>{storyFn()}</Layout>);
 addDecorator(withInfo({
   inline: true,
   propTablesExclude: [Layout]

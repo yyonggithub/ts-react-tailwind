@@ -1,11 +1,10 @@
 import React from "react";
-import Button from "../components/button";
-import Icon from "../components/icon";
 import ButtonGroup, { Option } from "../components/button/button-group";
+import Layout from "../components/layout";
 
 export default {
   title: "ButtonGroup",
-  component: Button,
+  component: ButtonGroup,
 };
 
 const defOpts = [
@@ -53,34 +52,38 @@ const comb: { options: Option[] } = {
 };
 
 export const Default = () => {
-  return <ButtonGroup options={defOpts} />;
+  return (
+    <Layout>
+      <ButtonGroup options={defOpts} />
+    </Layout>
+  );
 };
 
 export const Size = () => {
   return (
-    <>
+    <Layout className="space-x-5">
       <ButtonGroup options={defOpts} size="h-6" />
       <ButtonGroup options={defOpts} size="h-10" />
-    </>
+    </Layout>
   );
 };
 
 export const Preset = () => (
-  <>
+  <Layout className="space-x-5">
     <ButtonGroup options={defOpts} preset="primary" />
     <ButtonGroup options={defOpts} preset="secondary" />
-  </>
+  </Layout>
 );
 
 export const CombinationAndRadius = () => (
-  <>
+  <Layout className="space-x-5">
     <ButtonGroup radius="first:rounded-l-full" options={defOpts}></ButtonGroup>
     <ButtonGroup radius="last:rounded-r-full" options={defOpts}></ButtonGroup>
-  </>
+  </Layout>
 );
 
 export const Direction = () => (
-  <>
+  <Layout className="space-x-5">
     <ButtonGroup orientation="vertical" options={defOpts}></ButtonGroup>
     <ButtonGroup
       preset="primary"
@@ -92,11 +95,11 @@ export const Direction = () => (
       orientation="vertical"
       options={defOpts}
     ></ButtonGroup>
-  </>
+  </Layout>
 );
 
 export const Selector = () => (
-  <>
+  <Layout className="space-x-5">
     <ButtonGroup selector={true} options={defOpts}></ButtonGroup>
     <ButtonGroup
       selector={true}
@@ -108,7 +111,7 @@ export const Selector = () => (
       preset={"secondary"}
       options={defOpts}
     ></ButtonGroup>
-  </>
+  </Layout>
 );
 
 export const Toggleable = () => (
@@ -121,7 +124,7 @@ export const Toggleable = () => (
 );
 
 export const Disabled = () => (
-  <>
+  <Layout className="space-x-5">
     <ButtonGroup disabled={true} options={defOpts}></ButtonGroup>
     <ButtonGroup
       disabled={true}
@@ -133,15 +136,15 @@ export const Disabled = () => (
       options={disabled.options}
       selector={true}
     ></ButtonGroup>
-  </>
+  </Layout>
 );
 
 export const Comb = () => (
-  <>
+  <Layout className="space-x-5">
     <ButtonGroup
       // disabled={true}
       options={comb.options}
       selector={true}
     ></ButtonGroup>
-  </>
+  </Layout>
 );

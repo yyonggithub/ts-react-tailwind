@@ -3,7 +3,7 @@ import classnames from "classnames";
 import Icon from "../icon";
 import { classnamesType } from "../../interface";
 
-type AlertProps = {
+export type AlertProps = {
   className?: classnamesType;
   text?: string;
   textClass?: classnamesType;
@@ -12,9 +12,16 @@ type AlertProps = {
   icon?: string;
   iconClass?: classnamesType;
   iconSize?: string;
-} & Partial<typeof defaultProps>;
+} & Partial<IDefaultProps>;
 
-const defaultProps = {
+interface IDefaultProps {
+  border: string;
+  display: string;
+  radius: string;
+  padding: string;
+}
+
+const defaultProps: IDefaultProps = {
   border: "border border-normal border-l-0",
   display: "flex",
   radius: "rounded",
